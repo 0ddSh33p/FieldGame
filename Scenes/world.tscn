@@ -1,12 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwkr71g5jqsap"]
+[gd_scene load_steps=4 format=3 uid="uid://cwkr71g5jqsap"]
 
 [ext_resource type="PackedScene" uid="uid://d3juim822u6ql" path="res://GrassInstancing/GrassInstance.tscn" id="1_a02cp"]
+[ext_resource type="PackedScene" uid="uid://dajifag4dy54r" path="res://Prefabs/player.tscn" id="2_go701"]
+
+[sub_resource type="Environment" id="Environment_5a7ea"]
+background_mode = 1
+background_color = Color(0.773106, 0.9629937, 0.935227, 1)
+ambient_light_color = Color(0.8992584, 0.8992584, 0.8992584, 1)
+ambient_light_energy = 16.0
+ssao_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.67058825, 0.9411765, 0.8901961, 1)
 
 [node name="World" type="Node3D"]
 
-[node name="GrassInstance" parent="." instance=ExtResource("1_a02cp")]
+[node name="BaseGrassInstance" parent="." instance=ExtResource("1_a02cp")]
+transform = Transform3D(50, 0, 0, 0, 8, 0, 0, 0, 50, 0, 0, 0)
+size = Vector2(1000, 1000)
 flowerColor = Vector3(0.96, 0.995, 0.05)
 colorStep = Vector3(0.012, 0.023, 0.004)
 height = 0.089
-windPower = 0.006
+windPower = 0.002
+windSpeed = 0.1
 heightDiscrepency = 0.35
+
+[node name="Player" parent="." instance=ExtResource("2_go701")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5a7ea")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.77406126, 0.44598606, 0.44936138, 0, -0.70976746, 0.7044361, 0.6331107, -0.5452767, -0.5494035, 0, 0, 0)
+shadow_enabled = true
