@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwkr71g5jqsap"]
+
+[ext_resource type="PackedScene" uid="uid://d3juim822u6ql" path="res://GrassInstancing/GrassInstance.tscn" id="1_a02cp"]
+
+[node name="World" type="Node3D"]
+
+[node name="GrassInstance" parent="." instance=ExtResource("1_a02cp")]
+flowerColor = Vector3(0.96, 0.995, 0.05)
+colorStep = Vector3(0.012, 0.023, 0.004)
+height = 0.089
+windPower = 0.006
+heightDiscrepency = 0.35
