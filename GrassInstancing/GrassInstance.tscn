@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3juim822u6ql"]
+[gd_scene load_steps=6 format=3 uid="uid://d3juim822u6ql"]
 
 [ext_resource type="Script" uid="uid://c3igrhfvpj4ks" path="res://GrassInstancing/grassGen.gd" id="1_i5rmq"]
 
@@ -10,6 +10,8 @@ albedo_color = Color(0.22521096, 0.39518246, 0.33925956, 1)
 [sub_resource type="Curve" id="Curve_f5qvh"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.8862746, 0.86009943), 0.8071188, 0.8071188, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_kv3le"]
 
 [node name="GrassInstance" type="MeshInstance3D"]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
@@ -25,3 +27,8 @@ heightCurve = SubResource("Curve_f5qvh")
 windPower = 0.005
 windSpeed = 0.135
 heightDiscrepency = 0.335
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_kv3le")

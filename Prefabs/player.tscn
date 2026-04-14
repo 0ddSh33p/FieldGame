@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dajifag4dy54r"]
+[gd_scene load_steps=4 format=3 uid="uid://dajifag4dy54r"]
+
+[ext_resource type="Script" uid="uid://558y0kynsw2" path="res://Prefabs/player.gd" id="1_y6xdh"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_a02cp"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_go701"]
 
 [node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_y6xdh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
