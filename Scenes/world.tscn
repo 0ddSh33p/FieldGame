@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=4 uid="uid://cwkr71g5jqsap"]
+[gd_scene load_steps=19 format=4 uid="uid://cwkr71g5jqsap"]
 
 [ext_resource type="PackedScene" uid="uid://d3juim822u6ql" path="res://GrassInstancing/GrassInstance.tscn" id="1_a02cp"]
 [ext_resource type="PackedScene" uid="uid://dajifag4dy54r" path="res://Prefabs/player.tscn" id="2_go701"]
+[ext_resource type="PackedScene" uid="uid://dyd0wlgvc8lbt" path="res://Prefabs/character.tscn" id="3_5a7ea"]
 
 [sub_resource type="Environment" id="Environment_5a7ea"]
 background_mode = 1
@@ -219,40 +220,43 @@ environment = SubResource("Environment_5a7ea")
 transform = Transform3D(0.77406126, 0.44598606, 0.44936138, 0, -0.70976746, 0.7044361, 0.6331107, -0.5452767, -0.5494035, 0, 0, 0)
 shadow_enabled = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="pillars1" type="StaticBody3D" parent="."]
 
-[node name="ruins1" type="Node3D" parent="StaticBody3D"]
+[node name="ruins1" type="Node3D" parent="pillars1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.235, -1.291825, -14.014)
 
-[node name="Cube" type="MeshInstance3D" parent="StaticBody3D/ruins1"]
-transform = Transform3D(0.20195454, -0.25077885, -0.15172438, 0.18671243, 0.2521022, -0.16816331, 0.2259398, 0.015824188, 0.27458474, -0.90173984, 2.0137882, 1.7514725)
+[node name="Cube" type="MeshInstance3D" parent="pillars1/ruins1"]
+transform = Transform3D(0.22949395, -0.28497615, -0.17241418, 0.21217334, 0.28647995, -0.1910948, 0.25674993, 0.017982043, 0.31202832, -0.82295203, 2.3182366, 1.6209173)
 mesh = SubResource("ArrayMesh_ywgbm")
 skeleton = NodePath("")
 
-[node name="Cube_001" type="MeshInstance3D" parent="StaticBody3D/ruins1"]
-transform = Transform3D(-0.2811105, -0.20595326, 0.07249842, -0.12904218, 0.06137571, -0.32600164, 0.17612746, -0.28374678, -0.12313743, -1.8224802, 2.0137882, 2.9338808)
+[node name="Cube_001" type="MeshInstance3D" parent="pillars1/ruins1"]
+transform = Transform3D(-0.31944394, -0.23403794, 0.082384616, -0.14663893, 0.06974517, -0.37045664, 0.20014498, -0.32243973, -0.13992898, -1.8692486, 2.3182366, 2.9645643)
 mesh = SubResource("ArrayMesh_jjqyr")
 skeleton = NodePath("")
 
-[node name="Cube_002" type="MeshInstance3D" parent="StaticBody3D/ruins1"]
-transform = Transform3D(0.17599675, 0.20588937, -0.23093432, -0.30205014, 0.056821488, -0.17953548, -0.06698368, 0.28473994, 0.20281099, 0.055889606, 1.8801157, 5.568692)
+[node name="Cube_002" type="MeshInstance3D" parent="pillars1/ruins1"]
+transform = Transform3D(0.19999643, 0.23396534, -0.26242554, -0.343239, 0.06456991, -0.20401771, -0.076117866, 0.3235683, 0.23046717, 0.26526403, 2.166336, 5.9586697)
 mesh = SubResource("ArrayMesh_nnxcc")
 skeleton = NodePath("")
 
-[node name="Cube_003" type="MeshInstance3D" parent="StaticBody3D/ruins1"]
-transform = Transform3D(0.31722254, 0, 0, 0, 0.28763786, 0, 0, 0, 0.31722254, -2.3450794, 1.88477, 0.60510445)
+[node name="Cube_003" type="MeshInstance3D" parent="pillars1/ruins1"]
+transform = Transform3D(0.36048037, 0, 0, 0, 0.3268614, 0, 0, 0, 0.36048037, -2.4631116, 2.171625, 0.31822586)
 mesh = SubResource("ArrayMesh_p24ar")
 skeleton = NodePath("")
 
-[node name="Cube_004" type="MeshInstance3D" parent="StaticBody3D/ruins1"]
-transform = Transform3D(0.490205, 0, 0, 0, 0.35594374, 0, 0, 0, 0.490205, -2.0343783, 1.8431547, 2.731762)
+[node name="Cube_004" type="MeshInstance3D" parent="pillars1/ruins1"]
+transform = Transform3D(0.5570515, 0, 0, 0, 0.40448177, 0, 0, 0, 0.5570515, -2.110042, 2.1243348, 2.7348833)
 mesh = SubResource("ArrayMesh_2pft6")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(0.033458948, 0, 1.323654, 0, 1.3240769, 0, -1.323654, 0, 0.033458948, 2.4015992, 1.5802963, -12.1490345)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="pillars1"]
+transform = Transform3D(0.038021557, 0, 1.5041533, 0, 1.5046338, 0, -1.5041533, 0, 0.038021557, 2.3533416, 2.0017908, -12.264113)
 shape = SubResource("BoxShape3D_go701")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1.0105934, 0, 0.85550016, 0, 1.3240769, 0, -0.85550016, 0, 1.0105934, 2.7595923, 0.81396556, -10.50776)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pillars1"]
+transform = Transform3D(1.1484023, 0, 0.97215986, 0, 1.5046338, 0, -0.97215986, 0, 1.1484023, 2.7601523, 1.1309597, -10.399028)
 shape = SubResource("BoxShape3D_go701")
+
+[node name="Character" parent="." instance=ExtResource("3_5a7ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31085372, 0, -5.7308784)

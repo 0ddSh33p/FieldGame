@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyd0wlgvc8lbt"]
+
+[ext_resource type="Script" uid="uid://dwbu2bpb6dg5j" path="res://Prefabs/dialogue_player.gd" id="1_7iube"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_anquw"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7iube"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7iube"]
+size = Vector3(4.1583557, 2.6436768, 4.371521)
+
+[node name="Character" type="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_anquw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CylinderMesh_7iube")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28180528, 0.8218384, 0.034820557)
+shape = SubResource("BoxShape3D_7iube")
+
+[node name="DialoguePlayer" type="Node" parent="."]
+script = ExtResource("1_7iube")
+dialoguePath = "res://Dialogue/TestDialogue.dialogue"
+
+[connection signal="body_entered" from="Area3D" to="DialoguePlayer" method="_on_dialogue_trigger_area_body_entered"]
+[connection signal="body_exited" from="Area3D" to="DialoguePlayer" method="_on_dialogue_trigger_area_body_exited"]

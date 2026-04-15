@@ -6,6 +6,12 @@ const JUMP_VELOCITY = 4.5
 
 
 func _physics_process(delta: float) -> void:
+	
+	# Stop movement while in dialogue
+	if GlobalsIdk.dialogueRunning:
+		velocity = Vector3(0, 0, 0)
+		return
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta

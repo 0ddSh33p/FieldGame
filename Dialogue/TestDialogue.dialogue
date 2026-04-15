@@ -1,0 +1,18 @@
+~ start
+Congrats. You've implemented dialogue.
+- Hooray, I did it!
+	You did it?
+	- Yes, I did it
+		What is your name?
+		- Lucy
+			Okay
+		- Fin
+			Lucy implemented this dialogue, not you!
+- Hooray, Lucy did it!
+	Let's give our thanks to Lucy
+	- My goat
+		Correct!
+	- Okay
+		Yay!
+Goodbye.
+=> END
