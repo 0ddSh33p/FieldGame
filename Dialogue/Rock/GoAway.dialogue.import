@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://vtxmus1cdwyi"
+path="res://.godot/imported/GoAway.dialogue-61df68636d2285e57340f678dd3baa22.tres"
+
+[deps]
+
+source_file="res://Dialogue/Rock/GoAway.dialogue"
+dest_files=["res://.godot/imported/GoAway.dialogue-61df68636d2285e57340f678dd3baa22.tres"]
+
+[params]
+
+defaults=true

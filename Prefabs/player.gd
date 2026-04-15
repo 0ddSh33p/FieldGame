@@ -8,7 +8,7 @@ const JUMP_VELOCITY = 4.5
 func _physics_process(delta: float) -> void:
 	
 	# Stop movement while in dialogue
-	if GlobalsIdk.dialogueRunning:
+	if DialogueInfo.dialogueRunning:
 		velocity = Vector3(0, 0, 0)
 		return
 	

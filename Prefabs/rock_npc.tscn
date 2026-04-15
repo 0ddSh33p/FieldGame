@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://bbqvo57eamdhd"]
+
+[ext_resource type="Script" uid="uid://b6rdwce67cgrv" path="res://rock_npc.gd" id="1_pjvb6"]
+[ext_resource type="Script" uid="uid://dwbu2bpb6dg5j" path="res://Prefabs/dialogue_player.gd" id="2_16c8w"]
+[ext_resource type="Resource" uid="uid://b3xgesry5tqu5" path="res://Dialogue/Rock/test.dialogue" id="3_pjvb6"]
+[ext_resource type="Resource" uid="uid://vtxmus1cdwyi" path="res://Dialogue/Rock/GoAway.dialogue" id="4_16c8w"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_o1ui2"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_j1jaq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4cvq4"]
+size = Vector3(4.1583557, 2.6436768, 4.371521)
+
+[node name="RockNPC" type="CharacterBody3D"]
+script = ExtResource("1_pjvb6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_o1ui2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CylinderMesh_j1jaq")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28180528, 0.8218384, 0.034820557)
+shape = SubResource("BoxShape3D_4cvq4")
+
+[node name="Dialogue" type="Node" parent="."]
+script = ExtResource("2_16c8w")
+dialoguePaths = Array[Resource]([ExtResource("3_pjvb6"), ExtResource("4_16c8w")])
+repeatLastDialogue = true
+
+[connection signal="body_entered" from="Area3D" to="Dialogue" method="_on_area_3d_body_entered"]

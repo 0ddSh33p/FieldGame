@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyd0wlgvc8lbt"]
+[gd_scene load_steps=8 format=3 uid="uid://dyd0wlgvc8lbt"]
 
 [ext_resource type="Script" uid="uid://dwbu2bpb6dg5j" path="res://Prefabs/dialogue_player.gd" id="1_7iube"]
+[ext_resource type="Script" uid="uid://g6bdy84or503" path="res://Prefabs/grassnpc.gd" id="1_jqdeh"]
+[ext_resource type="Resource" uid="uid://iakt7ta3kev0" path="res://Dialogue/tests/TestDialogue.dialogue" id="2_ulf0j"]
+[ext_resource type="Resource" uid="uid://d12rxdirvph7m" path="res://Dialogue/tests/TestDialogue2.dialogue" id="3_j1uod"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_anquw"]
 
@@ -9,7 +12,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_7iube"]
 size = Vector3(4.1583557, 2.6436768, 4.371521)
 
-[node name="Character" type="CharacterBody3D"]
+[node name="GrassNPC" type="CharacterBody3D"]
+script = ExtResource("1_jqdeh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -25,9 +29,8 @@ mesh = SubResource("CylinderMesh_7iube")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28180528, 0.8218384, 0.034820557)
 shape = SubResource("BoxShape3D_7iube")
 
-[node name="DialoguePlayer" type="Node" parent="."]
+[node name="Dialogue" type="Node" parent="."]
 script = ExtResource("1_7iube")
-dialoguePath = "res://Dialogue/TestDialogue.dialogue"
+dialoguePaths = Array[Resource]([ExtResource("2_ulf0j"), ExtResource("3_j1uod")])
 
-[connection signal="body_entered" from="Area3D" to="DialoguePlayer" method="_on_dialogue_trigger_area_body_entered"]
-[connection signal="body_exited" from="Area3D" to="DialoguePlayer" method="_on_dialogue_trigger_area_body_exited"]
+[connection signal="body_entered" from="Area3D" to="Dialogue" method="_on_area_3d_body_entered"]

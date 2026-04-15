@@ -260,7 +260,7 @@ transform = Transform3D(1.1484023, 0, 0.97215986, 0, 1.5046338, 0, -0.97215986, 
 shape = SubResource("BoxShape3D_go701")
 
 [node name="GrassNPC" parent="." instance=ExtResource("3_5a7ea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1922014, 0, -5.7081065)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31085372, 0, -5.7308784)
 
 [node name="RockNPC" parent="." instance=ExtResource("4_8j60k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9200096, 0, -5.707036)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.495575, 0, -3.659213)
