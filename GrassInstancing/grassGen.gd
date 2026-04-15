@@ -45,7 +45,7 @@ func _process(delta: float) -> void:
 				mat.set_shader_parameter("color", flowerColor)
 			grassLayerN.material_override = mat
 			grassLayerN.position = Vector3(0.0,height/float(numberOfSteps+1) * (i+1),0.0)
-			grassLayerN.cast_shadow = 0;
+			grassLayerN.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF;
 			self.add_child(grassLayerN)
 			blades.append(grassLayerN)
 		generate = false

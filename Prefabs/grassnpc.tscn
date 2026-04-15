@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dyd0wlgvc8lbt"]
 
-[ext_resource type="Script" uid="uid://dwbu2bpb6dg5j" path="res://Prefabs/dialogue_player.gd" id="1_7iube"]
-[ext_resource type="Script" uid="uid://g6bdy84or503" path="res://Prefabs/grassnpc.gd" id="1_jqdeh"]
+[ext_resource type="Script" uid="uid://dwbu2bpb6dg5j" path="res://scripts/dialogue_player.gd" id="1_7iube"]
+[ext_resource type="Script" uid="uid://g6bdy84or503" path="res://scripts/grassnpc.gd" id="1_jqdeh"]
 [ext_resource type="Resource" uid="uid://iakt7ta3kev0" path="res://Dialogue/tests/TestDialogue.dialogue" id="2_ulf0j"]
 [ext_resource type="Resource" uid="uid://d12rxdirvph7m" path="res://Dialogue/tests/TestDialogue2.dialogue" id="3_j1uod"]
 

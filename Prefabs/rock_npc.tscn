@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bbqvo57eamdhd"]
 
 [ext_resource type="Script" uid="uid://b6rdwce67cgrv" path="res://rock_npc.gd" id="1_pjvb6"]
-[ext_resource type="Script" uid="uid://dwbu2bpb6dg5j" path="res://Prefabs/dialogue_player.gd" id="2_16c8w"]
+[ext_resource type="Script" uid="uid://dwbu2bpb6dg5j" path="res://scripts/dialogue_player.gd" id="2_16c8w"]
 [ext_resource type="Resource" uid="uid://b3xgesry5tqu5" path="res://Dialogue/Rock/test.dialogue" id="3_pjvb6"]
 [ext_resource type="Resource" uid="uid://vtxmus1cdwyi" path="res://Dialogue/Rock/GoAway.dialogue" id="4_16c8w"]
 

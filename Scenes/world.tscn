@@ -202,24 +202,25 @@ size = Vector3(0.6251221, 1.3203125, 2.2228851)
 
 [node name="World" type="Node3D"]
 
+[node name="WoldDATA" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="WoldDATA"]
+environment = SubResource("Environment_5a7ea")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WoldDATA"]
+transform = Transform3D(0.77406126, 0.44598603, 0.44936135, 0, -0.70976746, 0.7044361, 0.6331107, -0.5452767, -0.5494035, 0, 0, 0)
+shadow_enabled = true
+
 [node name="BaseGrassInstance" parent="." instance=ExtResource("1_a02cp")]
 transform = Transform3D(50, 0, 0, 0, 8, 0, 0, 0, 50, 0, 0, 0)
 size = Vector2(1000, 1000)
 flowerColor = Vector3(0.96, 0.995, 0.05)
 colorStep = Vector3(0.012, 0.023, 0.004)
-height = 0.089
+numberOfSteps = 35
+height = 0.08
 windPower = 0.002
 windSpeed = 0.1
 heightDiscrepency = 0.35
-
-[node name="Player" parent="." instance=ExtResource("2_go701")]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_5a7ea")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.77406126, 0.44598606, 0.44936138, 0, -0.70976746, 0.7044361, 0.6331107, -0.5452767, -0.5494035, 0, 0, 0)
-shadow_enabled = true
 
 [node name="pillars1" type="StaticBody3D" parent="."]
 
@@ -264,3 +265,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1922014, 0, -5.7081065)
 
 [node name="RockNPC" parent="." instance=ExtResource("4_8j60k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9200096, 0, -5.707036)
+
+[node name="Player" parent="." instance=ExtResource("2_go701")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.386454, 0, 0.60880256)
+speed = 3.6
+mSensitivity = 1.0
