@@ -20,6 +20,14 @@ public partial class Player : CharacterBody3D
     }
 }
 
+public override void _Process(double delta)
+{
+    if (Input.IsActionJustPressed("esc"))
+    {
+		Input.MouseMode = Input.MouseModeEnum.Visible;
+    }
+}
+
 
 	public override void _PhysicsProcess(double delta)
 	{

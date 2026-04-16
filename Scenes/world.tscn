@@ -284,3 +284,13 @@ mSensitivity = 1.0
 
 [node name="RuinsSector1" parent="." instance=ExtResource("5_fo5ed")]
 transform = Transform3D(0.31254506, 0, -0.24747159, 0, 0.39865595, 0, 0.24747159, 0, 0.31254506, -11.015717, 0.2698928, -9.568606)
+
+[node name="uiPanel" type="Panel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="uiPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+text = "hi"
