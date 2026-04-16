@@ -17,11 +17,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-DialogueInfo="*res://Singletons/dialogue_info.gd"
-
-[dialogue_manager]
-
 runtime/advanced/uses_dotnet=true
 
 [dotnet]
