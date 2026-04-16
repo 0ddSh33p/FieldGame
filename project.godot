@@ -26,6 +26,14 @@ project/assembly_name="FieldGame"
 [editor_plugins]
 
 enabled=PackedStringArray()
+<<<<<<< Updated upstream
+=======
+
+[global_group]
+
+GrassPerson=""
+RockPerson=""
+>>>>>>> Stashed changes
 
 [input]
 
