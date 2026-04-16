@@ -19,8 +19,61 @@ fog_light_color = Color(0.67058825, 0.9411765, 0.8901961, 1)
 
 [node name="World" type="Node3D"]
 
-[node name="Dialogue" type="Node" parent="."]
+[node name="Dialogue" type="Node" parent="." node_paths=PackedStringArray("uiPanel", "t1", "t2", "word")]
 script = ExtResource("1_5ukr8")
+uiPanel = NodePath("DialogueUI")
+t1 = NodePath("DialogueUI/HBoxContainer/t1")
+t2 = NodePath("DialogueUI/HBoxContainer/t2")
+word = NodePath("DialogueUI/HBoxContainer/word")
+
+[node name="DialogueUI" type="Panel" parent="Dialogue"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Dialogue/DialogueUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="t1" type="TextEdit" parent="Dialogue/DialogueUI/HBoxContainer"]
+layout_mode = 2
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+virtual_keyboard_show_on_focus = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
+
+[node name="word" type="TextEdit" parent="Dialogue/DialogueUI/HBoxContainer"]
+layout_mode = 2
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+virtual_keyboard_enabled = false
+virtual_keyboard_show_on_focus = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
+
+[node name="t2" type="TextEdit" parent="Dialogue/DialogueUI/HBoxContainer"]
+layout_mode = 2
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+virtual_keyboard_show_on_focus = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
 
 [node name="WoldDATA" type="Node" parent="."]
 
