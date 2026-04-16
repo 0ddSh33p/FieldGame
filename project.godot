@@ -27,6 +27,11 @@ project/assembly_name="FieldGame"
 
 enabled=PackedStringArray()
 
+[global_group]
+
+GrassPerson=""
+RockPerson=""
+
 [input]
 
 left={

@@ -32,8 +32,8 @@ public partial class Dialogue : Node
 	}
 
 
-    public override void _Process(double delta)
-    {
+	public override void _Process(double delta)
+	{
 		if (running)
 		{
 			
@@ -43,6 +43,6 @@ public partial class Dialogue : Node
 				if(cur <= end) cur += 1;
 			}
 		}
-    }
+	}
 
 }
