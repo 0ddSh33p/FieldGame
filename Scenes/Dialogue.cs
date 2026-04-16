@@ -1,11 +1,12 @@
 using Godot;
 using System;
+using System.ComponentModel;
 
 public partial class Dialogue : Node
 {
 	
-	private Control uiPanel;
-	private TextEdit t1, t2, word;
+	[Export] private Control uiPanel;
+	[Export] private TextEdit t1, t2, word;
 	
 	public bool running;
 	private int start, end, cur;
@@ -36,8 +37,13 @@ public partial class Dialogue : Node
     {
 		if (running)
 		{
-			
-			//myText.Text = diaText[cur];
+			int wordS = diaText[cur].Find("$");
+			int wordE = diaText[cur].Find("%");
+
+			t1.Text = diaText[cur].Substr(0,wordS);
+			word.Text = diaText[cur].Substr(wordS+1,wordE-wordS+1);
+			t2.Text = diaText[cur].Substr(wordE+1,diaText[cur].Length - wordE + 1);
+
 			if (Input.IsActionJustPressed("talk"))
 			{
 				if(cur <= end) cur += 1;
