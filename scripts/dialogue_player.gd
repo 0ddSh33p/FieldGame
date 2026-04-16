@@ -1,5 +1,4 @@
 extends Node
-var group: String
 
 @export var dialoguePaths: Array[Resource]
 @export var repeatLastDialogue: bool = false
@@ -9,7 +8,7 @@ var balloon: Resource
 var noMoreDialogue: bool = false
 
 func _ready() -> void:
-	group = get_parent().group
+	var group = get_parent().group
 	# set dialogue balloon variant depending on type of npc
 	if group == "grass":
 		balloon = load("res://Dialogue/Balloons/grass_npc_balloon.tscn")

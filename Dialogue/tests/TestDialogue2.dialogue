@@ -1,9 +1,0 @@
-~ start
-Hello again.
-~ home
-[[Ask a question.|Ask a simple question!|Ask me a question please.]]
-- No
-	Goodbye. => END
-- Tell me that again.
-	Okay. => home
-=> END

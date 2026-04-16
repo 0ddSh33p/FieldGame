@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=4 uid="uid://cwkr71g5jqsap"]
+[gd_scene load_steps=22 format=4 uid="uid://cwkr71g5jqsap"]
 
+[ext_resource type="Script" uid="uid://j7fcvqepgx18" path="res://Scenes/Dialogue.cs" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://d3juim822u6ql" path="res://GrassInstancing/GrassInstance.tscn" id="1_a02cp"]
 [ext_resource type="PackedScene" uid="uid://dajifag4dy54r" path="res://Prefabs/player.tscn" id="2_go701"]
 [ext_resource type="PackedScene" uid="uid://dyd0wlgvc8lbt" path="res://Prefabs/grassnpc.tscn" id="3_5a7ea"]
@@ -204,6 +205,9 @@ size = Vector3(0.6251221, 1.3203125, 2.2228851)
 
 [node name="World" type="Node3D"]
 
+[node name="Dialogue" type="Node" parent="."]
+script = ExtResource("1_5ukr8")
+
 [node name="WoldDATA" type="Node" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="WoldDATA"]
@@ -225,8 +229,8 @@ flowerColor = Vector3(0.96, 0.995, 0.05)
 colorStep = Vector3(0.012, 0.023, 0.004)
 numberOfSteps = 35
 height = 0.08
-windPower = 0.002
-windSpeed = 0.1
+windPower = 0.001
+windSpeed = 0.06
 heightDiscrepency = 0.35
 
 [node name="pillars1" type="StaticBody3D" parent="."]
