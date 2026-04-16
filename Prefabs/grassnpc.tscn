@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyd0wlgvc8lbt"]
+
+[sub_resource type="GDScript" id="GDScript_ijh6v"]
+script/source = "extends CharacterBody3D
+
+var group: String = \"grass\"
+"
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_anquw"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7iube"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7iube"]
+size = Vector3(4.1583557, 2.6436768, 4.371521)
+
+[node name="GrassNPC" type="CharacterBody3D"]
+script = SubResource("GDScript_ijh6v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_anquw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CylinderMesh_7iube")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28180528, 0.8218384, 0.034820557)
+shape = SubResource("BoxShape3D_7iube")
