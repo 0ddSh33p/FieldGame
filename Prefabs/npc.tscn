@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyd0wlgvc8lbt"]
+
+[ext_resource type="Script" uid="uid://g6bdy84or503" path="res://Prefabs/npc.gd" id="1_mpl78"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_anquw"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7iube"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7iube"]
+size = Vector3(4.1583557, 2.6436768, 4.371521)
+
+[sub_resource type="Curve3D" id="Curve3D_kd6ta"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.61796975, 0, -1.3064847, 0, 0, 0, 0, 0, 0, 1.1515715, 0, -1.5447897, 0, 0, 0, 0, 0, 0, 1.9222591, 0, -0.20622586, 0, 0, 0, 0, 0, 0, 1.6788843, 0, 0.9193848, 0, 0, 0, 0, 0, 0, -0.13628933, 0, 1.5176821, 0, 0, 0, 0, 0, 0, -1.3582358, 0, 0.46812648),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[node name="NPC" type="CharacterBody3D"]
+script = ExtResource("1_mpl78")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_anquw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CylinderMesh_7iube")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28180528, 0.8218384, 0.034820557)
+shape = SubResource("BoxShape3D_7iube")
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(0.37029678, 0, 0, 0, 1, 0, 0, 0, 0.38822585, 0, 0, 0)
+curve = SubResource("Curve3D_kd6ta")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.13346563, 0, -0.9910526, 0, 1, 0, 0.9910526, 0, 0.13346563, -0.61796975, 0, -1.3064847)
