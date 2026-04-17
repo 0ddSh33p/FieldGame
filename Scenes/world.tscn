@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cwkr71g5jqsap"]
 
-[ext_resource type="Script" uid="uid://j7fcvqepgx18" path="res://Scenes/Dialogue.cs" id="1_5ukr8"]
+[ext_resource type="Script" uid="uid://bcm74enfk6k64" path="res://scripts/Dialogue.cs" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://d3juim822u6ql" path="res://GrassInstancing/GrassInstance.tscn" id="1_a02cp"]
 [ext_resource type="PackedScene" uid="uid://dajifag4dy54r" path="res://Prefabs/player.tscn" id="2_go701"]
 [ext_resource type="PackedScene" uid="uid://dyd0wlgvc8lbt" path="res://Prefabs/npc.tscn" id="3_5a7ea"]
@@ -19,7 +19,7 @@ fog_light_color = Color(0.67058825, 0.9411765, 0.8901961, 1)
 
 [node name="World" type="Node3D"]
 
-[node name="Dialogue" type="Node" parent="." node_paths=PackedStringArray("uiPanel", "t1", "t2", "word")]
+[node name="Dialogue" type="Node" parent="." node_paths=PackedStringArray("uiPanel", "t1", "t2", "word") groups=["Dialogue"]]
 script = ExtResource("1_5ukr8")
 uiPanel = NodePath("DialogueUI")
 t1 = NodePath("DialogueUI/HBoxContainer/t1")
@@ -27,16 +27,29 @@ t2 = NodePath("DialogueUI/HBoxContainer/t2")
 word = NodePath("DialogueUI/HBoxContainer/word")
 
 [node name="DialogueUI" type="Panel" parent="Dialogue"]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -107.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Dialogue/DialogueUI"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -106.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="t1" type="TextEdit" parent="Dialogue/DialogueUI/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 editable = false
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -51,6 +64,7 @@ empty_selection_clipboard_enabled = false
 
 [node name="word" type="TextEdit" parent="Dialogue/DialogueUI/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 context_menu_enabled = false
 emoji_menu_enabled = false
 shortcut_keys_enabled = false
@@ -63,6 +77,7 @@ empty_selection_clipboard_enabled = false
 
 [node name="t2" type="TextEdit" parent="Dialogue/DialogueUI/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 editable = false
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -102,6 +117,9 @@ heightDiscrepency = 0.35
 
 [node name="NPC" parent="." instance=ExtResource("3_5a7ea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1922014, 0, -5.7081065)
+npc_group = "GrassPerson"
+my_dialogue = Array[String](["Hello $Player%!", "I am a $cool% NPC", "goodbye$ %.", "goodbye $ %."])
+dialogue_chunk_lengths = Array[int]([3, 1])
 
 [node name="Player" parent="." instance=ExtResource("2_go701")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.386454, 0, 0.60880256)
@@ -113,15 +131,5 @@ transform = Transform3D(0.31254506, 0, -0.24747159, 0, 0.39865595, 0, 0.24747159
 
 [node name="pillars" parent="." instance=ExtResource("6_5ukr8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7838874, 0, -10.402462)
-
-[node name="uiPanel" type="Panel" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="uiPanel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-text = "hi"
 
 [editable path="NPC"]

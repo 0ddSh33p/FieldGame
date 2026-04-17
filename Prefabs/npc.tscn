@@ -1,13 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://dyd0wlgvc8lbt"]
 
-[ext_resource type="Script" uid="uid://bb8jyv5lrmxdl" path="res://Prefabs/npc.gd" id="1_kd6ta"]
+[ext_resource type="Script" uid="uid://i4cs6ki2tukh" path="res://scripts/npc.gd" id="1_kd6ta"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_anquw"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_7iube"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7iube"]
-size = Vector3(4.1583557, 2.6436768, 4.371521)
+size = Vector3(2.28788, 2.6436768, 2.1900482)
 
 [sub_resource type="Curve3D" id="Curve3D_nrg37"]
 closed = true
@@ -31,7 +31,7 @@ mesh = SubResource("CylinderMesh_7iube")
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28180528, 0.8218384, 0.034820557)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012377024, 0.8218384, 0.012062073)
 shape = SubResource("BoxShape3D_7iube")
 
 [node name="Path3D" type="Path3D" parent="."]
@@ -40,3 +40,6 @@ curve = SubResource("Curve3D_nrg37")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
 transform = Transform3D(-0.112612516, 0, -0.993639, 0, 1, 0, 0.993639, 0, -0.112612516, -0.74876153, 0, -1.5143682)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using System.ComponentModel;
 
 public partial class Dialogue : Node
 {
@@ -11,7 +9,13 @@ public partial class Dialogue : Node
 	public bool running;
 	private int start, end, cur;
 	private string[] diaText;
-	
+
+
+    public override void _Ready()
+    {
+        uiPanel.Hide();
+    }
+
 	
 	public void openDiologue(string group, string[] text, int st, int en)
 	{
@@ -23,13 +27,9 @@ public partial class Dialogue : Node
 
 		end = en;
 		diaText = text;
-
-		running = false;
-		Input.MouseMode = Input.MouseModeEnum.Captured;
-		uiPanel.Hide();
 	}
 	public void updateBalloon(string group){
-
+		//style baloon here
 	}
 
 
@@ -37,16 +37,27 @@ public partial class Dialogue : Node
 	{
 		if (running)
 		{
+			GD.Print("talking now ");
+			GD.Print(diaText[cur]);
 			int wordS = diaText[cur].Find("$");
 			int wordE = diaText[cur].Find("%");
 
 			t1.Text = diaText[cur].Substr(0,wordS);
-			word.Text = diaText[cur].Substr(wordS+1,wordE-wordS+1);
+			word.Text = diaText[cur].Substr(wordS+1,wordE-wordS -1);
 			t2.Text = diaText[cur].Substr(wordE+1,diaText[cur].Length - wordE + 1);
 
 			if (Input.IsActionJustPressed("talk"))
 			{
-				if(cur <= end) cur += 1;
+				if(cur < end)
+				{
+					cur ++;
+				}
+				else
+				{
+					running = false;
+					Input.MouseMode = Input.MouseModeEnum.Captured;
+					uiPanel.Hide();
+				}
 			}
 		}
 	}
