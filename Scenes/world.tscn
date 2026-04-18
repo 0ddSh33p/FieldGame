@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwkr71g5jqsap"]
+[gd_scene load_steps=9 format=3 uid="uid://cwkr71g5jqsap"]
 
 [ext_resource type="Script" uid="uid://bcm74enfk6k64" path="res://scripts/Dialogue.cs" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://d3juim822u6ql" path="res://GrassInstancing/GrassInstance.tscn" id="1_a02cp"]
@@ -16,6 +16,8 @@ ssao_power = 17.569017
 ssao_sharpness = 1.0
 fog_enabled = true
 fog_light_color = Color(0.67058825, 0.9411765, 0.8901961, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_5ukr8"]
 
 [node name="World" type="Node3D"]
 
@@ -39,56 +41,26 @@ size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Dialogue/DialogueUI"]
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -106.0
-grow_horizontal = 2
+offset_right = 120.0
 grow_vertical = 0
 
-[node name="t1" type="TextEdit" parent="Dialogue/DialogueUI/HBoxContainer"]
+[node name="t1" type="Label" parent="Dialogue/DialogueUI/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-editable = false
-context_menu_enabled = false
-emoji_menu_enabled = false
-shortcut_keys_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-virtual_keyboard_enabled = false
-virtual_keyboard_show_on_focus = false
-middle_mouse_paste_enabled = false
-empty_selection_clipboard_enabled = false
+size_flags_horizontal = 2
 
-[node name="word" type="TextEdit" parent="Dialogue/DialogueUI/HBoxContainer"]
+[node name="word" type="Label" parent="Dialogue/DialogueUI/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-context_menu_enabled = false
-emoji_menu_enabled = false
-shortcut_keys_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-virtual_keyboard_enabled = false
-virtual_keyboard_show_on_focus = false
-middle_mouse_paste_enabled = false
-empty_selection_clipboard_enabled = false
+size_flags_horizontal = 2
 
-[node name="t2" type="TextEdit" parent="Dialogue/DialogueUI/HBoxContainer"]
+[node name="t2" type="Label" parent="Dialogue/DialogueUI/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-editable = false
-context_menu_enabled = false
-emoji_menu_enabled = false
-shortcut_keys_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-virtual_keyboard_enabled = false
-virtual_keyboard_show_on_focus = false
-middle_mouse_paste_enabled = false
-empty_selection_clipboard_enabled = false
+size_flags_horizontal = 2
+text = "
+"
 
 [node name="WoldDATA" type="Node" parent="."]
 
@@ -104,8 +76,32 @@ light_energy = 0.152
 transform = Transform3D(0.77406126, 0.44598603, 0.44936135, 0, -0.70976746, 0.7044361, 0.6331107, -0.5452767, -0.5494035, 0, 0, 0)
 shadow_enabled = true
 
-[node name="BaseGrassInstance" parent="." instance=ExtResource("1_a02cp")]
+[node name="Archetecture" type="Node3D" parent="."]
+
+[node name="RuinsSector1" parent="Archetecture" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(0.31254506, 0, -0.24747159, 0, 0.39865595, 0, 0.24747159, 0, 0.31254506, -11.015717, 0.2698928, -9.568606)
+
+[node name="pillars" parent="Archetecture" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7838874, 0, -10.402462)
+
+[node name="Characters" type="Node3D" parent="."]
+
+[node name="NPC" parent="Characters" instance=ExtResource("3_5a7ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1922014, 0, -5.7081065)
+npc_group = "GrassPerson"
+my_dialogue = Array[String](["Hello $Player%!", "I am a $cool% NPC", "goodbye.", "goodbye."])
+dialogue_chunk_lengths = Array[int]([3, 1])
+
+[node name="Player" parent="." instance=ExtResource("2_go701")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.386454, 0, 0.60880256)
+speed = 3.6
+mSensitivity = 1.0
+
+[node name="WorldEnvironment" type="Node3D" parent="."]
+
+[node name="BaseGrassInstance" parent="WorldEnvironment" instance=ExtResource("1_a02cp")]
 transform = Transform3D(200, 0, 0, 0, 8, 0, 0, 0, 200, 0, 0, 0)
+skeleton = NodePath("../..")
 size = Vector2(2000, 2000)
 flowerColor = Vector3(0.96, 0.995, 0.05)
 colorStep = Vector3(0.012, 0.023, 0.004)
@@ -115,21 +111,11 @@ windPower = 0.001
 windSpeed = 0.06
 heightDiscrepency = 0.35
 
-[node name="NPC" parent="." instance=ExtResource("3_5a7ea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1922014, 0, -5.7081065)
-npc_group = "GrassPerson"
-my_dialogue = Array[String](["Hello $Player%!", "I am a $cool% NPC", "goodbye$ %.", "goodbye $ %."])
-dialogue_chunk_lengths = Array[int]([3, 1])
+[node name="TopBorder" type="StaticBody3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64.00218)
 
-[node name="Player" parent="." instance=ExtResource("2_go701")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.386454, 0, 0.60880256)
-speed = 3.6
-mSensitivity = 1.0
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/TopBorder"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_5ukr8")
 
-[node name="RuinsSector1" parent="." instance=ExtResource("5_fo5ed")]
-transform = Transform3D(0.31254506, 0, -0.24747159, 0, 0.39865595, 0, 0.24747159, 0, 0.31254506, -11.015717, 0.2698928, -9.568606)
-
-[node name="pillars" parent="." instance=ExtResource("6_5ukr8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7838874, 0, -10.402462)
-
-[editable path="NPC"]
+[editable path="Characters/NPC"]

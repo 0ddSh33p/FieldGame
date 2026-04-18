@@ -5,10 +5,16 @@ public partial class Camera3d : Camera3D
 {
 	[Export] private Player player;
 	[Export] private float maxRotationDegs = 75, minRotationDegs = -90;
+	private Dialogue dio;
+
+	public override void _Ready()
+    {
+		dio = GetTree().GetFirstNodeInGroup("Dialogue") as Dialogue;
+    }
 
 	public override void _Input(InputEvent @event)
 	{
-		if (@event is InputEventMouseMotion motion)
+		if (@event is InputEventMouseMotion motion && !dio.running)
 		{
 			Vector2 mouseDelta = motion.Relative;
 			RotateX(mouseDelta.Y * -0.001f * player.mSensitivity);

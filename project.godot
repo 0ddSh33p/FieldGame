@@ -14,9 +14,6 @@ config/name="FieldGame"
 run/main_scene="uid://cwkr71g5jqsap"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
-
-[autoload]
-
 runtime/advanced/uses_dotnet=true
 
 [dotnet]

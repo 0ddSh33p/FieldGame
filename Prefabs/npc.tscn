@@ -1,13 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyd0wlgvc8lbt"]
+[gd_scene load_steps=9 format=3 uid="uid://dyd0wlgvc8lbt"]
 
 [ext_resource type="Script" uid="uid://i4cs6ki2tukh" path="res://scripts/npc.gd" id="1_kd6ta"]
+[ext_resource type="Script" uid="uid://csq83gr2s0vh1" path="res://scripts/LookAtPlayer.gd" id="2_c0dvn"]
+[ext_resource type="Texture2D" uid="uid://bowy8geunhcci" path="res://Assets/TEMPNPC.png" id="2_nrg37"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_anquw"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_7iube"]
+[sub_resource type="QuadMesh" id="QuadMesh_kd6ta"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7iube"]
-size = Vector3(2.28788, 2.6436768, 2.1900482)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0dvn"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("2_nrg37")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kd6ta"]
+radius = 2.3955078
 
 [sub_resource type="Curve3D" id="Curve3D_nrg37"]
 closed = true
@@ -17,22 +25,34 @@ _data = {
 }
 point_count = 7
 
-[node name="NPC" type="CharacterBody3D"]
+[node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("ico")]
 script = ExtResource("1_kd6ta")
+ico = NodePath("FacePlayer/ico")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_anquw")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CylinderMesh_7iube")
+[node name="FacePlayer" type="Node3D" parent="."]
+script = ExtResource("2_c0dvn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FacePlayer"]
+transform = Transform3D(2.51771, 0, 1.7484555e-07, 0, 2.51771, 0, -4.402104e-07, 0, 1, 0, 1.251188, 0)
+mesh = SubResource("QuadMesh_kd6ta")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_c0dvn")
+
+[node name="ico" type="Label3D" parent="FacePlayer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 2.9284635, 0)
+pixel_size = 0.01
+text = "!"
+font_size = 90
 
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012377024, 0.8218384, 0.012062073)
-shape = SubResource("BoxShape3D_7iube")
+shape = SubResource("CylinderShape3D_kd6ta")
 
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1.697785, 0, 0, 0, 1, 0, 0, 0, 1.5278527, 0, 0, 0)

@@ -21,5 +21,6 @@ mesh = SubResource("CylinderMesh_go701")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.843699, 0)
+current = true
 script = ExtResource("2_5wxv7")
 player = NodePath("..")
