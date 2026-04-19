@@ -9,6 +9,10 @@
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_y6xdh")
+xBound = 90.0
+zBound = 90.0
+xKick = 180.0
+zKick = 180.0
 mSensitivity = 0.07
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Player"]]

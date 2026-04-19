@@ -1,11 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://cwkr71g5jqsap"]
+[gd_scene load_steps=6 format=3 uid="uid://cwkr71g5jqsap"]
 
 [ext_resource type="Script" uid="uid://bcm74enfk6k64" path="res://scripts/Dialogue.cs" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://d3juim822u6ql" path="res://GrassInstancing/GrassInstance.tscn" id="1_a02cp"]
 [ext_resource type="PackedScene" uid="uid://dajifag4dy54r" path="res://Prefabs/player.tscn" id="2_go701"]
-[ext_resource type="PackedScene" uid="uid://dyd0wlgvc8lbt" path="res://Prefabs/npc.tscn" id="3_5a7ea"]
-[ext_resource type="PackedScene" uid="uid://dr6ctchmfcuqs" path="res://Prefabs/ruins_sector_1.tscn" id="5_fo5ed"]
-[ext_resource type="PackedScene" uid="uid://cjx3d34687wxa" path="res://Prefabs/pillars.tscn" id="6_5ukr8"]
+[ext_resource type="PackedScene" uid="uid://bk4ltvegcoxyn" path="res://Scenes/world_environment.tscn" id="3_5a7ea"]
 
 [sub_resource type="Environment" id="Environment_5a7ea"]
 background_mode = 1
@@ -16,47 +14,11 @@ ssao_power = 17.569017
 ssao_sharpness = 1.0
 fog_enabled = true
 fog_light_color = Color(0.67058825, 0.9411765, 0.8901961, 1)
-fog_density = 0.0202
+fog_density = 0.015
 volumetric_fog_density = 0.1112
 volumetric_fog_albedo = Color(0.67058825, 0.9411765, 0.8901961, 1)
 volumetric_fog_emission = Color(0.67058825, 0.9411765, 0.8901961, 1)
 volumetric_fog_sky_affect = 0.0
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_5ukr8"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_5ukr8"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_5ukr8"]
-viewport_path = NodePath("WorldEnvironment/Right")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ukr8"]
-resource_local_to_scene = true
-shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_5ukr8")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_k7acu"]
-viewport_path = NodePath("WorldEnvironment/Top")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k7acu"]
-resource_local_to_scene = true
-shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_k7acu")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_o06y3"]
-viewport_path = NodePath("WorldEnvironment/Back")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5v1tr"]
-resource_local_to_scene = true
-shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_o06y3")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_0fj1v"]
-viewport_path = NodePath("WorldEnvironment/Left")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ikia7"]
-resource_local_to_scene = true
-shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_0fj1v")
 
 [node name="World" type="Node3D"]
 
@@ -115,63 +77,33 @@ light_energy = 0.152
 transform = Transform3D(0.77406126, 0.44598603, 0.44936135, 0, -0.70976746, 0.7044361, 0.6331107, -0.5452767, -0.5494035, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Archetecture" type="Node3D" parent="."]
-
-[node name="RuinsSector1" parent="Archetecture" instance=ExtResource("5_fo5ed")]
-transform = Transform3D(0.31254506, 0, -0.24747159, 0, 0.39865595, 0, 0.24747159, 0, 0.31254506, -11.015717, 0.2698928, -9.568606)
-
-[node name="pillars" parent="Archetecture" instance=ExtResource("6_5ukr8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7838874, 0, -10.402462)
-
-[node name="Characters" type="Node3D" parent="."]
-
-[node name="NPC" parent="Characters" instance=ExtResource("3_5a7ea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1922014, 0, -5.7081065)
-npc_group = "GrassPerson"
-my_dialogue = Array[String](["Hello $Player%!", "I am a $cool% NPC", "goodbye.", "goodbye."])
-dialogue_chunk_lengths = Array[int]([3, 1])
-
 [node name="Player" parent="." instance=ExtResource("2_go701")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.386454, 0, 0.60880256)
-speed = 3.6
+speed = 10.0
+xBound = 100.0
+zBound = 100.0
+xKick = 200.0
+zKick = 200.0
 mSensitivity = 1.0
 
-[node name="WorldEnvironment" type="Node3D" parent="."]
+[node name="WorldEnvironment" parent="." instance=ExtResource("3_5a7ea")]
 
-[node name="Right" type="SubViewport" parent="WorldEnvironment"]
-size = Vector2i(3840, 3840)
+[node name="Looping" type="Node3D" parent="."]
 
-[node name="Camera3D" type="Camera3D" parent="WorldEnvironment/Right"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -98, 0, 0)
-projection = 1
-size = 200.0
+[node name="lookalike1" parent="Looping" instance=ExtResource("3_5a7ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -200)
 
-[node name="Left" type="SubViewport" parent="WorldEnvironment"]
-size = Vector2i(3840, 3840)
+[node name="lookalike2" parent="Looping" instance=ExtResource("3_5a7ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 200)
 
-[node name="Camera3D" type="Camera3D" parent="WorldEnvironment/Left"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 98, 0, 0)
-projection = 1
-size = 200.0
+[node name="lookalike3" parent="Looping" instance=ExtResource("3_5a7ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
 
-[node name="Back" type="SubViewport" parent="WorldEnvironment"]
-size = Vector2i(3840, 3840)
+[node name="lookalike4" parent="Looping" instance=ExtResource("3_5a7ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -200, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="WorldEnvironment/Back"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -98)
-projection = 1
-size = 200.0
-
-[node name="Top" type="SubViewport" parent="WorldEnvironment"]
-size = Vector2i(3840, 3840)
-
-[node name="Camera3D" type="Camera3D" parent="WorldEnvironment/Top"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 98)
-projection = 1
-size = 200.0
-
-[node name="BaseGrassInstance" parent="WorldEnvironment" instance=ExtResource("1_a02cp")]
-transform = Transform3D(100, 0, 0, 0, 8, 0, 0, 0, 100, 0, 0, 0)
+[node name="BaseGrassInstance2" parent="Looping" instance=ExtResource("1_a02cp")]
+transform = Transform3D(100, 0, 0, 0, 8, 0, 0, 0, 100, -200, 0, 200)
 skeleton = NodePath("../..")
 size = Vector2(2000, 2000)
 flowerColor = Vector3(0.96, 0.995, 0.05)
@@ -182,52 +114,38 @@ windPower = 0.001
 windSpeed = 0.06
 heightDiscrepency = 0.35
 
-[node name="RightBorder" type="StaticBody3D" parent="WorldEnvironment"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 100, 0, 0)
+[node name="BaseGrassInstance" parent="Looping" instance=ExtResource("1_a02cp")]
+transform = Transform3D(100, 0, 0, 0, 8, 0, 0, 0, 100, 200, 0, 200)
+skeleton = NodePath("../../..")
+size = Vector2(2000, 2000)
+flowerColor = Vector3(0.96, 0.995, 0.05)
+colorStep = Vector3(0.012, 0.023, 0.004)
+numberOfSteps = 35
+height = 0.08
+windPower = 0.001
+windSpeed = 0.06
+heightDiscrepency = 0.35
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/RightBorder"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-shape = SubResource("WorldBoundaryShape3D_5ukr8")
+[node name="BaseGrassInstance3" parent="Looping" instance=ExtResource("1_a02cp")]
+transform = Transform3D(100, 0, 0, 0, 8, 0, 0, 0, 100, -200, 0, -200)
+skeleton = NodePath("../..")
+size = Vector2(2000, 2000)
+flowerColor = Vector3(0.96, 0.995, 0.05)
+colorStep = Vector3(0.012, 0.023, 0.004)
+numberOfSteps = 35
+height = 0.08
+windPower = 0.001
+windSpeed = 0.06
+heightDiscrepency = 0.35
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldEnvironment/RightBorder"]
-transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 1, 0, -0.086, 0)
-mesh = SubResource("QuadMesh_5ukr8")
-surface_material_override/0 = SubResource("StandardMaterial3D_5ukr8")
-
-[node name="TopBorder" type="StaticBody3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/TopBorder"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-shape = SubResource("WorldBoundaryShape3D_5ukr8")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldEnvironment/TopBorder"]
-transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 1, 0, -0.086, 0)
-mesh = SubResource("QuadMesh_5ukr8")
-surface_material_override/0 = SubResource("StandardMaterial3D_k7acu")
-
-[node name="BackBorder" type="StaticBody3D" parent="WorldEnvironment"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 100)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/BackBorder"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-shape = SubResource("WorldBoundaryShape3D_5ukr8")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldEnvironment/BackBorder"]
-transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 1, 0, -0.086, 0)
-mesh = SubResource("QuadMesh_5ukr8")
-surface_material_override/0 = SubResource("StandardMaterial3D_5v1tr")
-
-[node name="LeftBorder" type="StaticBody3D" parent="WorldEnvironment"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -100, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/LeftBorder"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-shape = SubResource("WorldBoundaryShape3D_5ukr8")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldEnvironment/LeftBorder"]
-transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 1, 0, -0.086, 0)
-mesh = SubResource("QuadMesh_5ukr8")
-surface_material_override/0 = SubResource("StandardMaterial3D_ikia7")
-
-[editable path="Characters/NPC"]
+[node name="BaseGrassInstance4" parent="Looping" instance=ExtResource("1_a02cp")]
+transform = Transform3D(100, 0, 0, 0, 8, 0, 0, 0, 100, 200, 0, -200)
+skeleton = NodePath("../../..")
+size = Vector2(2000, 2000)
+flowerColor = Vector3(0.96, 0.995, 0.05)
+colorStep = Vector3(0.012, 0.023, 0.004)
+numberOfSteps = 35
+height = 0.08
+windPower = 0.001
+windSpeed = 0.06
+heightDiscrepency = 0.35
