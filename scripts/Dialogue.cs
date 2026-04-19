@@ -5,8 +5,9 @@ public partial class Dialogue : Node
 	
 	[Export] private Control uiPanel;
 	[Export] private Label t1, t2, word;
+	[Export] private ItemList wordChoices;
 	
-	public bool running;
+	public bool running, pause = false, overriden = false;
 	private int end, cur;
 	private string[] diaText;
 
@@ -23,6 +24,7 @@ public partial class Dialogue : Node
 		cur = st;
 		uiPanel.Show();
 		Input.MouseMode = Input.MouseModeEnum.Confined;
+		overriden = false;
 		running = true;
 
 		end = en;
@@ -55,7 +57,10 @@ public partial class Dialogue : Node
 			if(wordS >= 0)
 			{
 				t1.Text = diaText[cur].Substr(0,wordS);
-				word.Text = diaText[cur].Substr(wordS+1,wordE-wordS -1);
+				if (!overriden)
+				{
+					word.Text = diaText[cur].Substr(wordS+1,wordE-wordS -1);	
+				}
 				t2.Text = diaText[cur].Substr(wordE+1,diaText[cur].Length - wordE + 1);
 			} else
 			{
@@ -66,7 +71,7 @@ public partial class Dialogue : Node
 
 
 
-			if (Input.IsActionJustPressed("talk"))
+			if (Input.IsActionJustPressed("talk") && !pause)
 			{
 				if(cur < end - 1)
 				{
@@ -82,4 +87,18 @@ public partial class Dialogue : Node
 		}
 	}
 
+	public void MouseOverPause()
+	{
+		pause = true;
+	}
+	public void MouseOutUnpause()
+	{
+		pause = false;
+	}
+
+	public void overrideWord(int index, Vector2 atPosition, int mouseButton)
+	{
+		overriden = true;
+		word.Text = wordChoices.GetItemText(index);
+	}
 }

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwkr71g5jqsap"]
+[gd_scene load_steps=7 format=3 uid="uid://cwkr71g5jqsap"]
 
 [ext_resource type="Script" uid="uid://bcm74enfk6k64" path="res://scripts/Dialogue.cs" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://d3juim822u6ql" path="res://GrassInstancing/GrassInstance.tscn" id="1_a02cp"]
+[ext_resource type="Script" uid="uid://cu1hxjts0s7gu" path="res://scripts/WordController.cs" id="2_fo5ed"]
 [ext_resource type="PackedScene" uid="uid://dajifag4dy54r" path="res://Prefabs/player.tscn" id="2_go701"]
 [ext_resource type="PackedScene" uid="uid://bk4ltvegcoxyn" path="res://Scenes/world_environment.tscn" id="3_5a7ea"]
 
@@ -22,14 +23,15 @@ volumetric_fog_sky_affect = 0.0
 
 [node name="World" type="Node3D"]
 
-[node name="Dialogue" type="Node" parent="." node_paths=PackedStringArray("uiPanel", "t1", "t2", "word") groups=["Dialogue"]]
+[node name="Dialogue" type="Node" parent="." node_paths=PackedStringArray("uiPanel", "t1", "t2", "word", "wordChoices") groups=["Dialogue"]]
 script = ExtResource("1_5ukr8")
 uiPanel = NodePath("DialogueUI")
 t1 = NodePath("DialogueUI/HBoxContainer/t1")
 t2 = NodePath("DialogueUI/HBoxContainer/t2")
 word = NodePath("DialogueUI/HBoxContainer/word")
+wordChoices = NodePath("DialogueUI/ItemList")
 
-[node name="DialogueUI" type="Panel" parent="Dialogue"]
+[node name="DialogueUI" type="Panel" parent="Dialogue" node_paths=PackedStringArray("word", "selectables")]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -39,6 +41,9 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("2_fo5ed")
+word = NodePath("HBoxContainer/word")
+selectables = NodePath("ItemList")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Dialogue/DialogueUI"]
 layout_mode = 1
@@ -56,12 +61,24 @@ size_flags_horizontal = 2
 [node name="word" type="Label" parent="Dialogue/DialogueUI/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
+mouse_filter = 0
 
 [node name="t2" type="Label" parent="Dialogue/DialogueUI/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "
 "
+
+[node name="ItemList" type="ItemList" parent="Dialogue/DialogueUI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -142.0
+offset_right = 210.0
+offset_bottom = -112.0
+grow_vertical = 0
+auto_height = true
 
 [node name="WoldDATA" type="Node" parent="."]
 
@@ -149,3 +166,7 @@ height = 0.08
 windPower = 0.001
 windSpeed = 0.06
 heightDiscrepency = 0.35
+
+[connection signal="item_clicked" from="Dialogue/DialogueUI/ItemList" to="Dialogue" method="overrideWord"]
+[connection signal="mouse_entered" from="Dialogue/DialogueUI/ItemList" to="Dialogue" method="MouseOverPause"]
+[connection signal="mouse_exited" from="Dialogue/DialogueUI/ItemList" to="Dialogue" method="MouseOutUnpause"]
