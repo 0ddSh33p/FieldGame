@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cuxa2agcnbip8" path="res://scripts/Player.cs" id="1_y6xdh"]
 [ext_resource type="Script" uid="uid://ud7iokhrvvc1" path="res://scripts/Camera3d.cs" id="2_5wxv7"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_a02cp"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5wxv7"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_go701"]
 
@@ -17,7 +17,7 @@ mSensitivity = 0.07
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CylinderShape3D_a02cp")
+shape = SubResource("CapsuleShape3D_5wxv7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

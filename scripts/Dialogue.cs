@@ -38,7 +38,7 @@ public partial class Dialogue : Node
 		}
 		else if (group == "RockPerson")
 		{
-			word.Modulate = new Color(.26f,.33f,.48f);
+			word.Modulate = new Color(.46f,.53f,.98f);
 		}
 		else
 		{

@@ -21,7 +21,11 @@ public partial class WordController : Control
 			selectables.AddItem(word.Text);
 		}
 
-		if(savedWords.Count > 0)
+		if(word.Text == "")
+		{
+			selectables.Hide();
+		}
+		else if(savedWords.Count > 0)
 		{
 			selectables.Show();
 		}
