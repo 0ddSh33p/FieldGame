@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Godot;
 
 public partial class Dialogue : Node
@@ -8,40 +9,51 @@ public partial class Dialogue : Node
 	[Export] private ItemList wordChoices;
 	
 	public bool running, pause = false, overriden = false;
-	private int end, cur;
+	private int end;
+	public int cur, people;
 	private string[] diaText;
+	public int[] biasLevel, curID;
+
+	public List<int> unlockedIDs;
 
 
     public override void _Ready()
     {
         uiPanel.Hide();
+		unlockedIDs = new List<int>();
     }
 
 	
-	public void openDiologue(string group, string[] text, int st, int en)
+	public void openDiologue(string group, string[] text, int st, int en,int[] bias, int[] id)
 	{
 		updateBalloon(group);
 		cur = st;
+		curID = id;
+		end = en;
+		diaText = text;
+		biasLevel = bias;
+
 		uiPanel.Show();
 		Input.MouseMode = Input.MouseModeEnum.Confined;
 		overriden = false;
 		running = true;
-
-		end = en;
-		diaText = text;
 	}
+
 	public void updateBalloon(string group){
 		//style baloon here
 		if(group == "GrassPerson")
 		{
+			people = 0;
 			word.Modulate = new Color(.33f,.84f,0f);
 		}
 		else if (group == "RockPerson")
 		{
+			people = 1;
 			word.Modulate = new Color(.46f,.53f,.98f);
 		}
 		else
 		{
+			people= -1;
 			word.Modulate = new Color(.9f,.33f,.48f);
 		}
 	}
@@ -51,6 +63,10 @@ public partial class Dialogue : Node
 	{
 		if (running)
 		{
+			if (! unlockedIDs.Contains(curID[cur]))
+			{
+				unlockedIDs.Add(curID[cur]);
+			}
 			int wordS = diaText[cur].Find("$");
 			int wordE = diaText[cur].Find("%");
 
@@ -75,15 +91,22 @@ public partial class Dialogue : Node
 			{
 				if(cur < end - 1)
 				{
+					overriden = false;
 					cur ++;
 				}
 				else
 				{
 					running = false;
+					t1.Text = "";
+					word.Text = "";
+					t2.Text = "";
 					Input.MouseMode = Input.MouseModeEnum.Captured;
 					uiPanel.Hide();
 				}
 			}
+		} else
+		{
+			biasLevel = null;
 		}
 	}
 
