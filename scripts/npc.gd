@@ -39,7 +39,7 @@ func _process(_delta: float) -> void:
 		ico.hide()
 		dio.openDiologue(npc_group, my_dialogue, cur_dia, cur_dia + dialogue_chunk_lengths[dia_entry_id], bias_level, global_id);
 		cur_dia += dialogue_chunk_lengths[dia_entry_id] - 1
-		if (dia_entry_id < dialogue_chunk_lengths.size() -1 && (required_ids[dia_entry_id+1] < 0 || dio.unlockedIDsContains[required_ids[dia_entry_id+1]])):
+		if (dia_entry_id < dialogue_chunk_lengths.size() -1 && ( dia_entry_id == dialogue_chunk_lengths.size()-1 || required_ids[dia_entry_id+1] < 0 || dio.unlockedIdFetch().has(required_ids[dia_entry_id+1]))):
 			dia_entry_id += 1
 
 	if !dio.running:

@@ -124,4 +124,13 @@ public partial class Dialogue : Node
 		overriden = true;
 		word.Text = wordChoices.GetItemText(index);
 	}
+
+
+	public int[] unlockedIdFetch()
+	{
+		int[] retArray = new int[unlockedIDs.Count];
+		unlockedIDs.CopyTo(retArray);
+
+		return retArray;
+	}
 }
