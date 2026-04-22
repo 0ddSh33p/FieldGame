@@ -7,6 +7,7 @@ public partial class Dialogue : Node
 	[Export] private Control uiPanel;
 	[Export] private Label t1, t2, word;
 	[Export] private ItemList wordChoices;
+	[Export] private AnimationPlayer anims;
 	
 	public bool running, pause = false, overriden = false;
 	private int end;
@@ -14,14 +15,14 @@ public partial class Dialogue : Node
 	private string[] diaText;
 	public int[] biasLevel, curID;
 
-	private List<int> unlockedIDs;
+	public List<int> unlockedIDs;
 
 
-    public override void _Ready()
-    {
-        uiPanel.Hide();
+	public override void _Ready()
+	{
+		uiPanel.Hide();
 		unlockedIDs = new List<int>();
-    }
+	}
 
 	
 	public void openDiologue(string group, string[] text, int st, int en,int[] bias, int[] id)
@@ -34,9 +35,23 @@ public partial class Dialogue : Node
 		biasLevel = bias;
 
 		uiPanel.Show();
+		anims.Play("show");
+		
 		Input.MouseMode = Input.MouseModeEnum.Confined;
 		overriden = false;
 		running = true;
+	}
+	
+	// calls close anim
+	public void closeDialogue()
+	{
+		anims.Play("close");
+	}
+	
+	// called at the end of close anim just in case
+	public void fullyCloseDialogue()
+	{
+		uiPanel.Hide();
 	}
 
 	public void updateBalloon(string group){
@@ -63,7 +78,6 @@ public partial class Dialogue : Node
 	{
 		if (running)
 		{
-			//GD.Print(cur);
 			if (! unlockedIDs.Contains(curID[cur]))
 			{
 				unlockedIDs.Add(curID[cur]);
@@ -102,7 +116,7 @@ public partial class Dialogue : Node
 					word.Text = "";
 					t2.Text = "";
 					Input.MouseMode = Input.MouseModeEnum.Captured;
-					uiPanel.Hide();
+					closeDialogue();
 				}
 			}
 		} else

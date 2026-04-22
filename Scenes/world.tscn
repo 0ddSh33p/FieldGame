@@ -1,10 +1,95 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwkr71g5jqsap"]
+[gd_scene load_steps=13 format=3 uid="uid://cwkr71g5jqsap"]
 
 [ext_resource type="Script" uid="uid://bcm74enfk6k64" path="res://scripts/Dialogue.cs" id="1_5ukr8"]
 [ext_resource type="Script" uid="uid://cu1hxjts0s7gu" path="res://scripts/WordController.cs" id="2_fo5ed"]
 [ext_resource type="PackedScene" uid="uid://dajifag4dy54r" path="res://Prefabs/player.tscn" id="2_go701"]
 [ext_resource type="PackedScene" uid="uid://bk4ltvegcoxyn" path="res://Scenes/world_environment.tscn" id="3_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://dyd0wlgvc8lbt" path="res://Prefabs/npc.tscn" id="6_5ukr8"]
+
+[sub_resource type="Animation" id="Animation_fo5ed"]
+resource_name = "show"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.4),
+"transitions": PackedFloat32Array(0.5, 1, 1),
+"update": 0,
+"values": [Vector2(0.705, 0.105), Vector2(1.03, 1.093), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5ukr8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o06y3"]
+resource_name = "hide"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.705, 0.10500002)]
+}
+
+[sub_resource type="Animation" id="Animation_k7acu"]
+resource_name = "close"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.4),
+"transitions": PackedFloat32Array(1, 1, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.03, 1.093), Vector2(0.705, 0.105)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fullyCloseDialogue"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o06y3"]
+_data = {
+&"RESET": SubResource("Animation_5ukr8"),
+&"close": SubResource("Animation_k7acu"),
+&"hide": SubResource("Animation_o06y3"),
+&"show": SubResource("Animation_fo5ed")
+}
 
 [sub_resource type="Environment" id="Environment_5a7ea"]
 background_mode = 1
@@ -27,62 +112,89 @@ polygons = [PackedInt32Array(5, 4, 0), PackedInt32Array(0, 4, 3), PackedInt32Arr
 
 [node name="World" type="Node3D"]
 
-[node name="Dialogue" type="Node" parent="." node_paths=PackedStringArray("uiPanel", "t1", "t2", "word", "wordChoices") groups=["Dialogue"]]
+[node name="Dialogue" type="Node" parent="." node_paths=PackedStringArray("uiPanel", "t1", "t2", "word", "wordChoices", "anims") groups=["Dialogue"]]
 script = ExtResource("1_5ukr8")
-uiPanel = NodePath("DialogueUI")
-t1 = NodePath("DialogueUI/HBoxContainer/t1")
-t2 = NodePath("DialogueUI/HBoxContainer/t2")
-word = NodePath("DialogueUI/HBoxContainer/word")
-wordChoices = NodePath("DialogueUI/ItemList")
+uiPanel = NodePath("Control/DialogueUI")
+t1 = NodePath("Control/DialogueUI/MarginContainer/HBoxContainer/t1")
+t2 = NodePath("Control/DialogueUI/MarginContainer/HBoxContainer/t2")
+word = NodePath("Control/DialogueUI/MarginContainer/HBoxContainer/word")
+wordChoices = NodePath("Control/DialogueUI/ItemList")
+anims = NodePath("AnimationPlayer")
 
-[node name="DialogueUI" type="Panel" parent="Dialogue" node_paths=PackedStringArray("word", "selectables")]
+[node name="Control" type="Control" parent="Dialogue"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(558, 734)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DialogueUI" type="Panel" parent="Dialogue/Control" node_paths=PackedStringArray("word", "selectables")]
+layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -107.0
+offset_left = 117.0
+offset_top = -152.0
+offset_right = -121.0
+offset_bottom = -55.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_fo5ed")
-word = NodePath("HBoxContainer/word")
+word = NodePath("MarginContainer/HBoxContainer/word")
 selectables = NodePath("ItemList")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Dialogue/DialogueUI"]
+[node name="MarginContainer" type="MarginContainer" parent="Dialogue/Control/DialogueUI"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -106.0
-offset_right = 120.0
-grow_vertical = 0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="t1" type="Label" parent="Dialogue/DialogueUI/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Dialogue/Control/DialogueUI/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="t1" type="Label" parent="Dialogue/Control/DialogueUI/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
 
-[node name="word" type="Label" parent="Dialogue/DialogueUI/HBoxContainer"]
+[node name="word" type="Label" parent="Dialogue/Control/DialogueUI/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
 mouse_filter = 0
 
-[node name="t2" type="Label" parent="Dialogue/DialogueUI/HBoxContainer"]
+[node name="t2" type="Label" parent="Dialogue/Control/DialogueUI/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "
 "
 
-[node name="ItemList" type="ItemList" parent="Dialogue/DialogueUI"]
+[node name="ItemList" type="ItemList" parent="Dialogue/Control/DialogueUI"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -142.0
-offset_right = 210.0
-offset_bottom = -112.0
-grow_vertical = 0
+offset_left = -19.0
+offset_top = -85.0
+offset_right = 191.0
+offset_bottom = -55.0
+pivot_offset = Vector2(0, 29)
 auto_height = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Dialogue"]
+libraries = {
+&"": SubResource("AnimationLibrary_o06y3")
+}
+autoplay = "hide"
 
 [node name="WoldDATA" type="Node" parent="."]
 
@@ -175,9 +287,9 @@ bias_level = Array[int]([2, 0])
 global_id = Array[int]([5, 6])
 required_ids = Array[int]([-1, -1])
 
-[connection signal="item_clicked" from="Dialogue/DialogueUI/ItemList" to="Dialogue" method="overrideWord"]
-[connection signal="mouse_entered" from="Dialogue/DialogueUI/ItemList" to="Dialogue" method="MouseOverPause"]
-[connection signal="mouse_exited" from="Dialogue/DialogueUI/ItemList" to="Dialogue" method="MouseOutUnpause"]
+[connection signal="item_clicked" from="Dialogue/Control/DialogueUI/ItemList" to="Dialogue" method="overrideWord"]
+[connection signal="mouse_entered" from="Dialogue/Control/DialogueUI/ItemList" to="Dialogue" method="MouseOverPause"]
+[connection signal="mouse_exited" from="Dialogue/Control/DialogueUI/ItemList" to="Dialogue" method="MouseOutUnpause"]
 
 [editable path="Characters/NPC"]
 [editable path="Characters/NPC2"]
