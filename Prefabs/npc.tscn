@@ -1,10 +1,26 @@
-[gd_scene load_steps=9 format=3 uid="uid://dyd0wlgvc8lbt"]
+[gd_scene load_steps=12 format=3 uid="uid://dyd0wlgvc8lbt"]
 
 [ext_resource type="Script" uid="uid://i4cs6ki2tukh" path="res://scripts/npc.gd" id="1_kd6ta"]
-[ext_resource type="Script" uid="uid://csq83gr2s0vh1" path="res://scripts/LookAtPlayer.gd" id="2_c0dvn"]
+[ext_resource type="Script" path="res://scripts/LookAtPlayer.gd" id="2_c0dvn"]
 [ext_resource type="Texture2D" uid="uid://bowy8geunhcci" path="res://Assets/TEMPNPC.png" id="2_nrg37"]
+[ext_resource type="Script" uid="uid://g3phhp8qa0tk" path="res://scripts/StateMachine/node_state_machine.gd" id="4_wvgss"]
+[ext_resource type="Script" uid="uid://bq6hh4h1yo46v" path="res://Prefabs/idle_state.gd" id="5_dfrpf"]
+[ext_resource type="Script" uid="uid://ctwwvsycd4tea" path="res://Prefabs/walk_state.gd" id="6_dfrpf"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_anquw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dfrpf"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [sub_resource type="QuadMesh" id="QuadMesh_kd6ta"]
 
@@ -17,14 +33,6 @@ albedo_texture = ExtResource("2_nrg37")
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kd6ta"]
 radius = 2.3955078
 
-[sub_resource type="Curve3D" id="Curve3D_nrg37"]
-closed = true
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.74876153, 0, -1.5143682, 0, 0, 0, 0, 0, 0, 0.77233374, 0, -1.3419774, 0, 0, 0, 0, 0, 0, 1.3959833, 0, -0.33805442, 0, 0, 0, 0, 0, 0, 0.90923274, 0, 0.6557279, 0, 0, 0, 0, 0, 0, -0.27722204, 0, 1.01065, 0, 0, 0, 0, 0, 0, -1.0124179, 0, 0.46305582, 0, 0, 0, 0, 0, 0, -0.78425395, 0, -0.8400158),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 7
-
 [node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("ico")]
 script = ExtResource("1_kd6ta")
 ico = NodePath("FacePlayer/ico")
@@ -32,6 +40,10 @@ ico = NodePath("FacePlayer/ico")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_anquw")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dfrpf")
+animation = &"idle"
 
 [node name="FacePlayer" type="Node3D" parent="."]
 script = ExtResource("2_c0dvn")
@@ -54,12 +66,22 @@ font_size = 90
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012377024, 0.8218384, 0.012062073)
 shape = SubResource("CylinderShape3D_kd6ta")
 
-[node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1.697785, 0, 0, 0, 1, 0, 0, 0, 1.5278527, 0, 0, 0)
-curve = SubResource("Curve3D_nrg37")
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.112612516, 0, -0.993639, 0, 1, 0, 0.993639, 0, -0.112612516, -0.74876153, 0, -1.5143682)
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("4_wvgss")
+initial_node_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "animated_sprite")]
+script = ExtResource("5_dfrpf")
+character = NodePath("../..")
+animated_sprite = NodePath("../../AnimatedSprite3D")
+
+[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "animated_sprite", "navigation_agent")]
+script = ExtResource("6_dfrpf")
+character = NodePath("../..")
+animated_sprite = NodePath("../../AnimatedSprite3D")
+navigation_agent = NodePath("../../NavigationAgent3D")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -19,19 +19,13 @@ var run_dia = false
 var bufferedRunningCheck = false;
 var cur_dia = 0;
 var dia_entry_id = 0;
-var last_position: Vector3
 
 func _ready() -> void:
-	position = path_follow.global_position
-	last_position = position
 	ico.hide()
 	dio = get_tree().get_first_node_in_group("Dialogue")
 
 func _physics_process(delta: float) -> void:
-	path_follow.progress += move_speed * delta
-	#commented to test dialogue
-	#global_position = path_follow.global_position
-	last_position = position
+	pass
 
 func _process(_delta: float) -> void:
 	if run_dia && Input.is_action_just_pressed("talk") && bufferedRunningCheck:
