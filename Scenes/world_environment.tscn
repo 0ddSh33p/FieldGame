@@ -1346,7 +1346,7 @@ transform = Transform3D(0.9938579, 0, -0.11067146, 0, 1, 0, 0.11067146, 0, 0.993
 shape = SubResource("BoxShape3D_flnmh")
 
 [node name="pillars" parent="Archetecture" instance=ExtResource("3_djf8e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7838874, 0, -10.402462)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7838874, -0.24709916, -10.402462)
 
 [node name="BigRuin2" type="StaticBody3D" parent="Archetecture"]
 transform = Transform3D(-0.34831473, 0, -0.10500983, 0, 0.36379963, 0, 0.10500983, 0, -0.34831473, -30.090397, -1.5813316, 87.45189)

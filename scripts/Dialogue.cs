@@ -14,7 +14,7 @@ public partial class Dialogue : Node
 	private string[] diaText;
 	public int[] biasLevel, curID;
 
-	public List<int> unlockedIDs;
+	private List<int> unlockedIDs;
 
 
     public override void _Ready()
@@ -63,6 +63,7 @@ public partial class Dialogue : Node
 	{
 		if (running)
 		{
+			//GD.Print(cur);
 			if (! unlockedIDs.Contains(curID[cur]))
 			{
 				unlockedIDs.Add(curID[cur]);
