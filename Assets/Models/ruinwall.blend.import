@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dkic22ejlcco3"
-path="res://.godot/imported/ruinwall.blend-8b5a6956539406f7861b14984fec8218.scn"
+valid=false
 
 [deps]
 
 source_file="res://Assets/Models/ruinwall.blend"
-dest_files=["res://.godot/imported/ruinwall.blend-8b5a6956539406f7861b14984fec8218.scn"]
 
 [params]
 

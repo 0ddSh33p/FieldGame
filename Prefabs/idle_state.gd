@@ -1,7 +1,7 @@
 extends NodeState
 
 @export var character: CharacterBody3D
-@export var animated_sprite: AnimatedSprite3D
+@export var animated_sprite: AnimationPlayer
 
 @onready var idle_state_timer: Timer = Timer.new()
 @export var idle_state_time_interval: float = 5.0
@@ -23,7 +23,7 @@ func _on_next_transitions() -> void:
 		transition.emit("Walk")
 
 func _on_enter() -> void:
-	#animated_sprite.play("idle")
+	animated_sprite.play("idle")
 	
 	idle_state_timeout = false
 	idle_state_timer.start()

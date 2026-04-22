@@ -1,7 +1,7 @@
 extends NodeState
 
 @export var character: CharacterBody3D
-@export var animated_sprite: AnimatedSprite3D
+@export var animated_sprite: AnimationPlayer
 @export var navigation_agent: NavigationAgent3D
 @export var min_speed: float = 0.5
 @export var max_speed: float = 1

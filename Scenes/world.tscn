@@ -149,7 +149,7 @@ radius = 2.4189453
 height = 0.33203125
 
 [node name="NavigationRegion3D2" type="NavigationRegion3D" parent="Characters/Zones"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.103714, 2.3187363, 22.428904)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.103714, 2.0278177, 22.428904)
 navigation_mesh = SubResource("NavigationMesh_fo5ed")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Characters/Zones/NavigationRegion3D2"]

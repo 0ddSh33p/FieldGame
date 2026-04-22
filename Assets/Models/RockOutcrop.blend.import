@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dqm7rmuo8kcno"
-path="res://.godot/imported/RockOutcrop.blend-6ca1f4d640632985f204a26b67475bb8.scn"
+valid=false
 
 [deps]
 
 source_file="res://Assets/Models/RockOutcrop.blend"
-dest_files=["res://.godot/imported/RockOutcrop.blend-6ca1f4d640632985f204a26b67475bb8.scn"]
 
 [params]
 

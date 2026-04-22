@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dyd0wlgvc8lbt"]
+[gd_scene load_steps=16 format=3 uid="uid://dyd0wlgvc8lbt"]
 
 [ext_resource type="Script" uid="uid://i4cs6ki2tukh" path="res://scripts/npc.gd" id="1_kd6ta"]
 [ext_resource type="Script" path="res://scripts/LookAtPlayer.gd" id="2_c0dvn"]
-[ext_resource type="Texture2D" uid="uid://bowy8geunhcci" path="res://Assets/TEMPNPC.png" id="2_nrg37"]
+[ext_resource type="Texture2D" uid="uid://cpq1myj4gxq8u" path="res://Assets/Sprites/npcs/grassAnimalKeeper.png" id="3_dfrpf"]
 [ext_resource type="Script" uid="uid://g3phhp8qa0tk" path="res://scripts/StateMachine/node_state_machine.gd" id="4_wvgss"]
 [ext_resource type="Script" uid="uid://bq6hh4h1yo46v" path="res://Prefabs/idle_state.gd" id="5_dfrpf"]
 [ext_resource type="Script" uid="uid://ctwwvsycd4tea" path="res://Prefabs/walk_state.gd" id="6_dfrpf"]
@@ -28,10 +28,103 @@ animations = [{
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = ExtResource("2_nrg37")
+albedo_texture = ExtResource("3_dfrpf")
+texture_filter = 0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kd6ta"]
 radius = 2.3955078
+
+[sub_resource type="Animation" id="Animation_dfrpf"]
+resource_name = "walk"
+length = 1.1333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FacePlayer/MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.1333),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(1.686383, 2.0857952, 0.99999994), Vector3(1.686383, 2.3048956, 0.99999994), Vector3(1.686383, 2.0857952, 0.99999994)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FacePlayer/MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.1333),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 1.049458, 0), Vector3(0, 1.1645839, 0), Vector3(0, 1.049458, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1if3k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FacePlayer/MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.686383, 2.0857952, 0.99999994)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FacePlayer/MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.049458, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wik7l"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FacePlayer/MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(1.686383, 2.0857952, 0.99999994), Vector3(1.686383, 2.1345274, 0.99999994), Vector3(1.686383, 2.0857952, 0.99999994)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FacePlayer/MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 1.049458, 0), Vector3(0, 1.0799227, 0), Vector3(0, 1.049458, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wik7l"]
+_data = {
+&"RESET": SubResource("Animation_1if3k"),
+&"idle": SubResource("Animation_wik7l"),
+&"walk": SubResource("Animation_dfrpf")
+}
 
 [node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("ico")]
 script = ExtResource("1_kd6ta")
@@ -49,13 +142,13 @@ animation = &"idle"
 script = ExtResource("2_c0dvn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="FacePlayer"]
-transform = Transform3D(2.51771, 0, 1.7484555e-07, 0, 2.51771, 0, -4.402104e-07, 0, 1, 0, 1.251188, 0)
+transform = Transform3D(1.686383, 0, 1.7484555e-07, 0, 2.0857952, 0, -2.948566e-07, 0, 0.99999994, 0, 1.049458, 0)
 mesh = SubResource("QuadMesh_kd6ta")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_c0dvn")
 
 [node name="ico" type="Label3D" parent="FacePlayer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 2.9284635, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 2.4010563, 0)
 pixel_size = 0.01
 text = "!"
 font_size = 90
@@ -75,13 +168,20 @@ initial_node_state = NodePath("Idle")
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "animated_sprite")]
 script = ExtResource("5_dfrpf")
 character = NodePath("../..")
-animated_sprite = NodePath("../../AnimatedSprite3D")
+animated_sprite = NodePath("../../AnimationPlayer")
 
 [node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "animated_sprite", "navigation_agent")]
 script = ExtResource("6_dfrpf")
 character = NodePath("../..")
-animated_sprite = NodePath("../../AnimatedSprite3D")
+animated_sprite = NodePath("../../AnimationPlayer")
 navigation_agent = NodePath("../../NavigationAgent3D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wik7l")
+}
+autoplay = "idle"
+blend_times = [&"idle", &"idle", 582.857, &"idle", &"walk", 1302.857]
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
