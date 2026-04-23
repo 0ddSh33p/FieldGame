@@ -19,7 +19,7 @@ albedo_texture = ExtResource("3_dfrpf")
 texture_filter = 0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kd6ta"]
-radius = 2.3955078
+radius = 3.7685547
 
 [sub_resource type="Animation" id="Animation_1if3k"]
 length = 0.001
@@ -137,7 +137,6 @@ text = "!"
 font_size = 90
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(2.636261, 0, 0, 0, 1, 0, 0, 0, 2.1329484, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012377024, 0.8218384, 0.012062073)
