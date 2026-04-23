@@ -1305,7 +1305,7 @@ shape = SubResource("BoxShape3D_mbrrk")
 transform = Transform3D(-0.26499698, 0, 0.72973716, 0, 0.77636313, 0, -0.72973716, 0, -0.26499698, -30.00983, 0.33695984, -9.900323)
 
 [node name="Cube" type="MeshInstance3D" parent="Archetecture/RockOutcrop"]
-transform = Transform3D(0.95421445, 0, -0.29912412, 0, 1, 0, 0.29912412, 0, 0.95421445, 0.8230076, 0, -4.0538025)
+transform = Transform3D(0.99984944, 0, -0.017365068, 0, 1, 0, 0.017365068, 0, 0.99984944, 0.14800072, 0, -0.071014404)
 mesh = SubResource("ArrayMesh_oqwbk")
 skeleton = NodePath("")
 

@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://d7210xxju7nu"
-path="res://.godot/imported/threerocks.blend-d2e3ac514e04d82948a590d167ea7999.scn"
+valid=false
 
 [deps]
 
 source_file="res://Assets/Models/threerocks.blend"
-dest_files=["res://.godot/imported/threerocks.blend-d2e3ac514e04d82948a590d167ea7999.scn"]
 
 [params]
 

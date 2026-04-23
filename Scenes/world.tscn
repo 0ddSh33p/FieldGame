@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cpq1myj4gxq8u" path="res://Assets/Sprites/npcs/grassAnimalKeeper.png" id="6_o06y3"]
 [ext_resource type="Texture2D" uid="uid://dr7k62oo6rlte" path="res://Assets/Sprites/npcs/grassKid.png" id="7_o06y3"]
 [ext_resource type="Script" uid="uid://i4cs6ki2tukh" path="res://scripts/npc.gd" id="8_c5t2i"]
-[ext_resource type="Script" path="res://scripts/LookAtPlayer.gd" id="9_e0ngr"]
+[ext_resource type="Script" uid="uid://csq83gr2s0vh1" path="res://scripts/LookAtPlayer.gd" id="9_e0ngr"]
 [ext_resource type="Texture2D" uid="uid://tfrbtiq0bl0c" path="res://Assets/Sprites/npcs/OldManRock.png" id="10_kn0ld"]
 [ext_resource type="Script" uid="uid://g3phhp8qa0tk" path="res://scripts/StateMachine/node_state_machine.gd" id="11_hgpy0"]
 [ext_resource type="Script" uid="uid://bq6hh4h1yo46v" path="res://Prefabs/idle_state.gd" id="12_t2t4p"]
