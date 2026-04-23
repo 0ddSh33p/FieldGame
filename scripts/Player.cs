@@ -29,7 +29,8 @@ public partial class Player : CharacterBody3D
 		//just for editor use, allows the user to make the mouse visible to quit testing
 		if (Input.IsActionJustPressed("esc"))
 		{
-			Input.MouseMode = Input.MouseModeEnum.Visible;
+			//Input.MouseMode = Input.MouseModeEnum.Visible;
+			GetTree().Quit();
 		}
 
 		//looping player position, this should probably be seperated out onto another object, but I am feeling lazy...

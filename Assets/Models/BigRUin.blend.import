@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cfei58fo8d7ld"
-valid=false
+path="res://.godot/imported/BigRUin.blend-594be4ee24f9d6e5d1a76c4fdbab1488.scn"
 
 [deps]
 
 source_file="res://Assets/Models/BigRUin.blend"
+dest_files=["res://.godot/imported/BigRUin.blend-594be4ee24f9d6e5d1a76c4fdbab1488.scn"]
 
 [params]
 

@@ -284,14 +284,13 @@ polygons = [PackedInt32Array(5, 4, 0), PackedInt32Array(0, 4, 3), PackedInt32Arr
 
 [node name="World" type="Node3D"]
 
-[node name="Dialogue" type="Node" parent="." node_paths=PackedStringArray("uiPanel", "t1", "t2", "word", "wordChoices", "anims") groups=["Dialogue"]]
+[node name="Dialogue" type="Node" parent="." node_paths=PackedStringArray("uiPanel", "t1", "t2", "word", "wordChoices") groups=["Dialogue"]]
 script = ExtResource("1_5ukr8")
 uiPanel = NodePath("Control/DialogueUI")
 t1 = NodePath("Control/DialogueUI/MarginContainer/HBoxContainer/t1")
 t2 = NodePath("Control/DialogueUI/MarginContainer/HBoxContainer/t2")
 word = NodePath("Control/DialogueUI/MarginContainer/HBoxContainer/word")
 wordChoices = NodePath("Control/DialogueUI/VBoxContainer/ItemList")
-anims = NodePath("AnimationPlayer")
 
 [node name="Control" type="Control" parent="Dialogue"]
 layout_mode = 3
@@ -324,7 +323,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_hgpy0")
 script = ExtResource("2_fo5ed")
 word = NodePath("MarginContainer/HBoxContainer/word")
 selectables = NodePath("VBoxContainer/ItemList")
-winDir = "res://Scenes/happy_end.tscn"
 
 [node name="MarginContainer" type="MarginContainer" parent="Dialogue/Control/DialogueUI"]
 layout_mode = 1
