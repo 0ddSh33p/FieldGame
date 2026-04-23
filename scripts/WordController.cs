@@ -8,6 +8,7 @@ public partial class WordController : Control
 	private List<int> savedBiases;
 	[Export] private Label word;
 	[Export] private ItemList selectables;
+	[Export] private string winDir;
 	private Dialogue dia;
 
 	private string lastWord = "";
@@ -23,6 +24,14 @@ public partial class WordController : Control
 
 	public override void _Process(double delta)
 	{
+		GD.Print(antiGrassBias);
+		GD.Print(antiRockBias);
+
+		if(antiGrassBias + antiRockBias < -13)
+		{
+			GetTree().ChangeSceneToFile(winDir);
+		}
+
 		if (word.Text != "" && !savedWords.Contains(word.Text))
 		{
 			savedBiases.Add(dia.biasLevel[dia.cur]);
@@ -32,6 +41,7 @@ public partial class WordController : Control
 
 		if(lastWord != "" && lastWord != word.Text)
 		{
+			GD.Print("changing");
 			if(dia.people == 0)
 			{
 				antiRockBias += savedBiases[savedWords.FindIndex(x => x.Equals(lastWord))];
@@ -41,7 +51,10 @@ public partial class WordController : Control
 				antiGrassBias += savedBiases[savedWords.FindIndex(x => x.Equals(lastWord))];
 			}
 			
-		}
+		} 
+		
+		lastWord = word.Text;
+		
 
 		if(word.Text == "")
 		{

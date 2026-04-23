@@ -297,6 +297,7 @@ size_flags_vertical = 3
 script = ExtResource("2_fo5ed")
 word = NodePath("MarginContainer/HBoxContainer/word")
 selectables = NodePath("VBoxContainer/ItemList")
+winDir = "res://Scenes/happy_end.tscn"
 
 [node name="MarginContainer" type="MarginContainer" parent="Dialogue/Control/DialogueUI"]
 layout_mode = 1
