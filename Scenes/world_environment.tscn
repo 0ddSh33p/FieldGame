@@ -1305,6 +1305,7 @@ shape = SubResource("BoxShape3D_mbrrk")
 transform = Transform3D(-0.26499698, 0, 0.72973716, 0, 0.77636313, 0, -0.72973716, 0, -0.26499698, -30.00983, 0.33695984, -9.900323)
 
 [node name="Cube" type="MeshInstance3D" parent="Archetecture/RockOutcrop"]
+transform = Transform3D(0.95421445, 0, -0.29912412, 0, 1, 0, 0.29912412, 0, 0.95421445, 0.8230076, 0, -4.0538025)
 mesh = SubResource("ArrayMesh_oqwbk")
 skeleton = NodePath("")
 
@@ -1337,7 +1338,7 @@ transform = Transform3D(0.9107496, 0, 0.41296157, 0, 1, 0, -0.41296157, 0, 0.910
 shape = SubResource("BoxShape3D_7d77d")
 
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="Archetecture/RockOutcrop"]
-transform = Transform3D(0.29372406, 0, 0.9558915, 0, 1, 0, -0.9558915, 0, 0.29372406, 0.39452362, -0.04388365, 3.0447655)
+transform = Transform3D(0.29372406, 0, 0.9558915, 0, 1, 0, -0.9558915, 0, 0.29372406, 0.6479778, -0.04388365, -2.7757874)
 shape = SubResource("BoxShape3D_gpphi")
 
 [node name="CollisionShape3D10" type="CollisionShape3D" parent="Archetecture/RockOutcrop"]
@@ -1394,7 +1395,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.835014, 1.2809843, 35.57549)
 
 [node name="Large_Rock01" type="MeshInstance3D" parent="Rocks"]
-transform = Transform3D(0.8877755, -0.8648956, 0.11082102, 0.067082964, 0.7042935, 0.9290656, -0.455362, -1.5824493, 0.35292512, 5.351324, -0.4217037, -54.52677)
+transform = Transform3D(0.8877755, -0.8648956, 0.11082102, 0.067082964, 0.7042935, 0.9290656, -0.455362, -1.5824493, 0.35292512, 1.036686, -0.4217037, -53.169296)
 mesh = SubResource("ArrayMesh_0wxec")
 skeleton = NodePath("")
 
@@ -1404,7 +1405,7 @@ mesh = SubResource("ArrayMesh_jalb6")
 skeleton = NodePath("")
 
 [node name="Cluster04" type="MeshInstance3D" parent="Rocks"]
-transform = Transform3D(0.042434372, -0.2642226, 1.0331513, -0.22531313, 2.2513015, 0.1247697, -1.0152056, -0.51069444, 0.015493283, 78.05023, -0.9667424, -79.68474)
+transform = Transform3D(0.042434372, -0.2642226, 1.0331513, -0.22531313, 2.2513015, 0.1247697, -1.0152056, -0.51069444, 0.015493283, -6.2284164, -0.9667424, -130.00676)
 mesh = SubResource("ArrayMesh_jjmbs")
 skeleton = NodePath("")
 
@@ -1424,12 +1425,12 @@ mesh = SubResource("ArrayMesh_ohdhw")
 skeleton = NodePath("")
 
 [node name="Large_Rock04" type="MeshInstance3D" parent="Rocks"]
-transform = Transform3D(1.4409091, 0, 0, 0, 1.5365574, 0, 0, 0, 1.4409091, 7.379177, -0.6679846, -55.97621)
+transform = Transform3D(1.4409091, 0, 0, 0, 1.5365574, 0, 0, 0, 1.4409091, 3.064537, -0.6679846, -54.618736)
 mesh = SubResource("ArrayMesh_0ieap")
 skeleton = NodePath("")
 
 [node name="Cluster02" type="MeshInstance3D" parent="Rocks"]
-transform = Transform3D(0.10790975, 0, -0.8933391, 0, 0.89983284, 0, 0.8933391, 0, 0.10790975, -34.280632, -1.1306578, -87.06166)
+transform = Transform3D(0.10790975, 0, -0.8933391, 0, 0.89983284, 0, 0.8933391, 0, 0.10790975, -3.5626602, -1.1306578, -75.624756)
 mesh = SubResource("ArrayMesh_3luvf")
 skeleton = NodePath("")
 
@@ -1464,7 +1465,7 @@ mesh = SubResource("ArrayMesh_wbj3g")
 skeleton = NodePath("")
 
 [node name="Cube" type="MeshInstance3D" parent="Rocks"]
-transform = Transform3D(1.3178297, 0, 0, 0, 1.3178297, 0, 0, 0, 1.3178297, 41.341167, -0.5998007, -45.79384)
+transform = Transform3D(1.3178297, 0, 0, 0, 1.3178297, 0, 0, 0, 1.3178297, 22.907578, -0.59980166, -61.269547)
 mesh = SubResource("ArrayMesh_jh806")
 skeleton = NodePath("")
 
@@ -1474,6 +1475,6 @@ mesh = SubResource("ArrayMesh_tcjeq")
 skeleton = NodePath("")
 
 [node name="Medium_Rock06" type="MeshInstance3D" parent="Rocks"]
-transform = Transform3D(0.009947802, 0, 0.5648778, -0.17397538, -0.5375026, 0.0030638003, 0.5374193, -0.17400235, -0.009464243, 7.839884, -0.9954227, -53.603832)
+transform = Transform3D(0.009947802, 0, 0.5648778, -0.17397538, -0.5375026, 0.0030638003, 0.5374193, -0.17400235, -0.009464243, 11.441456, -0.9954232, -48.32388)
 mesh = SubResource("ArrayMesh_tcjeq")
 skeleton = NodePath("")

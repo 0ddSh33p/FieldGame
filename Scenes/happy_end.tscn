@@ -1,0 +1,439 @@
+[gd_scene load_steps=23 format=3 uid="uid://ctlpw2sajcxw4"]
+
+[ext_resource type="PackedScene" uid="uid://bk4ltvegcoxyn" path="res://Scenes/world_environment.tscn" id="4_7g5rx"]
+[ext_resource type="Texture2D" uid="uid://dt516ixg5xasm" path="res://Assets/Sprites/npcs/grassLeader.png" id="4_mu74l"]
+[ext_resource type="Texture2D" uid="uid://cpq1myj4gxq8u" path="res://Assets/Sprites/npcs/grassAnimalKeeper.png" id="5_bowe8"]
+[ext_resource type="Texture2D" uid="uid://dr7k62oo6rlte" path="res://Assets/Sprites/npcs/grassKid.png" id="6_n38hn"]
+[ext_resource type="Texture2D" uid="uid://tfrbtiq0bl0c" path="res://Assets/Sprites/npcs/OldManRock.png" id="7_r1e6x"]
+[ext_resource type="Texture2D" uid="uid://p43ryv0hbn8x" path="res://Assets/Sprites/npcs/RockSoldier.png" id="8_6ishv"]
+[ext_resource type="Texture2D" uid="uid://br6jc8l4u1xna" path="res://Assets/Sprites/npcs/AverageRockGUy.png" id="9_goo68"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xiri"]
+bg_color = Color(0.10980392, 0.10980392, 0.10980392, 0.34509805)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Environment" id="Environment_5a7ea"]
+background_mode = 1
+background_color = Color(0.773106, 0.9629937, 0.935227, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.30982426, 0.27062097, 0.27061376, 1)
+ssao_power = 17.569017
+ssao_sharpness = 1.0
+fog_enabled = true
+fog_light_color = Color(0.67058825, 0.9411765, 0.8901961, 1)
+fog_density = 0.015
+volumetric_fog_density = 0.1112
+volumetric_fog_albedo = Color(0.67058825, 0.9411765, 0.8901961, 1)
+volumetric_fog_emission = Color(0.67058825, 0.9411765, 0.8901961, 1)
+volumetric_fog_sky_affect = 0.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_anquw"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_kd6ta"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qbvu"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("4_mu74l")
+texture_filter = 0
+
+[sub_resource type="Animation" id="Animation_1if3k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FacePlayer/MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.686383, 2.0857952, 0.99999994)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FacePlayer/MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.049458, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wik7l"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FacePlayer/MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(1.686383, 2.0857952, 0.99999994), Vector3(1.686383, 2.1345274, 0.99999994), Vector3(1.686383, 2.0857952, 0.99999994)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FacePlayer/MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 1.049458, 0), Vector3(0, 1.0799227, 0), Vector3(0, 1.049458, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dfrpf"]
+resource_name = "walk"
+length = 1.1333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FacePlayer/MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.1333),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(1.686383, 2.0857952, 0.99999994), Vector3(1.686383, 2.3048956, 0.99999994), Vector3(1.686383, 2.0857952, 0.99999994)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FacePlayer/MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.1333),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 1.049458, 0), Vector3(0, 1.1645839, 0), Vector3(0, 1.049458, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wik7l"]
+_data = {
+&"RESET": SubResource("Animation_1if3k"),
+&"idle": SubResource("Animation_wik7l"),
+&"walk": SubResource("Animation_dfrpf")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2kh4j"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("5_bowe8")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07m02"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("6_n38hn")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xksrh"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("7_r1e6x")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s78y1"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("8_6ishv")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_slnlj"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("9_goo68")
+texture_filter = 0
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_fo5ed"]
+vertices = PackedVector3Array(-4.2767944, 0.3879399, 1.569067, 0.72320557, 0.3879399, 2.569067, 1.7232056, 0.3879399, -1.680933, 1.7232056, 0.3879399, -2.430933, -3.2767944, 0.3879399, -3.430933, -4.2767944, 0.3879399, 0.819067)
+polygons = [PackedInt32Array(5, 4, 0), PackedInt32Array(0, 4, 3), PackedInt32Array(0, 3, 2), PackedInt32Array(0, 2, 1)]
+
+[node name="World" type="Node3D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 28.721
+offset_left = 712.0
+offset_top = 67.0
+offset_right = -113.84009
+offset_bottom = 136.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8xiri")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Label" type="Label" parent="Control/Panel/MarginContainer"]
+layout_mode = 2
+text = "...and they lived in peace."
+
+[node name="WoldDATA" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="WoldDATA"]
+environment = SubResource("Environment_5a7ea")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="WoldDATA"]
+transform = Transform3D(0.59158164, 0.7939088, -0.14050028, -0.31287047, 0.38666433, 0.8675269, 0.7430635, -0.46925443, 0.477134, 0, 0, 0)
+light_color = Color(0.60063004, 0.51684785, 0.49675584, 1)
+light_energy = 0.152
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WoldDATA"]
+transform = Transform3D(0.77406126, 0.44598603, 0.44936135, 0, -0.70976746, 0.7044361, 0.6331107, -0.5452767, -0.5494035, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("4_7g5rx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0070705414, 0.028704643, -0.021886826)
+
+[node name="Looping" type="Node3D" parent="."]
+
+[node name="lookalike1" parent="Looping" instance=ExtResource("4_7g5rx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -200)
+
+[node name="lookalike2" parent="Looping" instance=ExtResource("4_7g5rx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 200)
+
+[node name="lookalike3" parent="Looping" instance=ExtResource("4_7g5rx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
+
+[node name="lookalike4" parent="Looping" instance=ExtResource("4_7g5rx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -200, 0, 0)
+
+[node name="lookalike5" parent="Looping" instance=ExtResource("4_7g5rx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, -200)
+
+[node name="lookalike6" parent="Looping" instance=ExtResource("4_7g5rx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -200, 0, 200)
+
+[node name="lookalike7" parent="Looping" instance=ExtResource("4_7g5rx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 200)
+
+[node name="lookalike8" parent="Looping" instance=ExtResource("4_7g5rx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -200, 0, -200)
+
+[node name="Camera3D" type="Camera3D" parent="Looping"]
+transform = Transform3D(0.9998894, 0.004708523, -0.014109656, 0, 0.9485763, 0.31654868, 0.014874562, -0.31651366, 0.9484713, -26.237066, 6.758524, 0.12776566)
+fov = 41.8
+near = 0.04
+
+[node name="Characters" type="Node3D" parent="."]
+
+[node name="Node3D" type="Node3D" parent="Characters"]
+transform = Transform3D(1.5489923, 0, -0.39535293, 0, 2.0857952, 0, 0.66671646, 0, 0.9185293, -24.610437, 1.1490574, -11.737211)
+
+[node name="GrassLeader" type="CharacterBody3D" parent="Characters" groups=["GrassPerson"]]
+transform = Transform3D(0.9185293, 0, -0.3953531, 0, 1, 0, 0.3953531, 0, 0.9185293, -24.610437, 0.09959936, -11.737211)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Characters/GrassLeader"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_anquw")
+
+[node name="FacePlayer" type="Node3D" parent="Characters/GrassLeader"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Characters/GrassLeader/FacePlayer"]
+transform = Transform3D(1.686383, 0, 1.7484555e-07, 0, 2.0857952, 0, -2.948566e-07, 0, 0.99999994, 0, 1.049458, 0)
+mesh = SubResource("QuadMesh_kd6ta")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6qbvu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Characters/GrassLeader"]
+libraries = {
+&"": SubResource("AnimationLibrary_wik7l")
+}
+autoplay = "idle"
+blend_times = [&"idle", &"idle", 582.857, &"idle", &"walk", 1302.857]
+
+[node name="grassAniamlKeeper" type="CharacterBody3D" parent="Characters" groups=["GrassPerson"]]
+transform = Transform3D(0.9305583, 0, -0.36614397, 0, 1, 0, 0.36614397, 0, 0.9305583, -24.146877, 0.08763814, -9.189279)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Characters/grassAniamlKeeper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_anquw")
+
+[node name="FacePlayer" type="Node3D" parent="Characters/grassAniamlKeeper"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Characters/grassAniamlKeeper/FacePlayer"]
+transform = Transform3D(1.686383, 0, 1.767233e-07, 0, 2.0857952, 0, -2.980232e-07, 0, 0.99999994, 0, 1.049458, 0)
+mesh = SubResource("QuadMesh_kd6ta")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_2kh4j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Characters/grassAniamlKeeper"]
+libraries = {
+&"": SubResource("AnimationLibrary_wik7l")
+}
+autoplay = "idle"
+blend_times = [&"idle", &"idle", 582.857, &"idle", &"walk", 1302.857]
+
+[node name="GrassKid" type="CharacterBody3D" parent="Characters" groups=["GrassPerson"]]
+transform = Transform3D(0.71030825, 0, -0.7038908, 0, 1, 0, 0.7038908, 0, 0.71030825, -26.236845, 0.07245731, -12.83294)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Characters/GrassKid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_anquw")
+
+[node name="FacePlayer" type="Node3D" parent="Characters/GrassKid"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Characters/GrassKid/FacePlayer"]
+transform = Transform3D(1.4518551, 0, 0.5087261, 0, 2.0857952, 0, -0.8579072, 0, 0.86092836, 0, 1.049458, 0)
+mesh = SubResource("QuadMesh_kd6ta")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_07m02")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Characters/GrassKid"]
+libraries = {
+&"": SubResource("AnimationLibrary_wik7l")
+}
+autoplay = "idle"
+blend_times = [&"idle", &"idle", 582.857, &"idle", &"walk", 1302.857]
+
+[node name="OldManRock" type="CharacterBody3D" parent="Characters" groups=["RockPerson"]]
+transform = Transform3D(0.96061933, 0, 0.27786806, 0, 1, 0, -0.27786806, 0, 0.96061933, -27.034128, 0.76142275, -11.964158)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Characters/OldManRock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_anquw")
+
+[node name="FacePlayer" type="Node3D" parent="Characters/OldManRock"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Characters/OldManRock/FacePlayer"]
+transform = Transform3D(1.686383, 0, 1.7484555e-07, 0, 2.0857952, 0, -2.948566e-07, 0, 0.99999994, 0, 1.049458, 0)
+mesh = SubResource("QuadMesh_kd6ta")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_xksrh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Characters/OldManRock"]
+libraries = {
+&"": SubResource("AnimationLibrary_wik7l")
+}
+autoplay = "idle"
+blend_times = [&"idle", &"idle", 582.857, &"idle", &"walk", 1302.857]
+
+[node name="RockSoldier" type="CharacterBody3D" parent="Characters" groups=["RockPerson"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.879822, 0.7344078, -11.170865)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Characters/RockSoldier"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_anquw")
+
+[node name="FacePlayer" type="Node3D" parent="Characters/RockSoldier"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Characters/RockSoldier/FacePlayer"]
+transform = Transform3D(1.5922605, 0, 0.32941067, 0, 2.0857952, 0, -0.5555126, 0, 0.9441867, 0, 1.049458, 0)
+mesh = SubResource("QuadMesh_kd6ta")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_s78y1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Characters/RockSoldier"]
+libraries = {
+&"": SubResource("AnimationLibrary_wik7l")
+}
+autoplay = "idle"
+blend_times = [&"idle", &"idle", 582.857, &"idle", &"walk", 1302.857]
+
+[node name="AverageRockDude" type="CharacterBody3D" parent="Characters" groups=["RockPerson"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.956236, 0.7150419, -8.571306)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Characters/AverageRockDude"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_anquw")
+
+[node name="FacePlayer" type="Node3D" parent="Characters/AverageRockDude"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Characters/AverageRockDude/FacePlayer"]
+transform = Transform3D(1.6836891, 0, 0.05650128, 0, 2.0857952, 0, -0.09528281, 0, 0.9984025, 0, 1.049458, 0)
+mesh = SubResource("QuadMesh_kd6ta")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_slnlj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Characters/AverageRockDude"]
+libraries = {
+&"": SubResource("AnimationLibrary_wik7l")
+}
+autoplay = "idle"
+blend_times = [&"idle", &"idle", 582.857, &"idle", &"walk", 1302.857]
+
+[node name="Zones" type="Node3D" parent="Characters"]
+
+[node name="AverageRockDude" type="NavigationRegion3D" parent="Characters/Zones"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.693947, 2.0896928, 22.516922)
+navigation_mesh = SubResource("NavigationMesh_fo5ed")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Characters/Zones/AverageRockDude"]
+transform = Transform3D(7.6577554, 0, -0.22452588, 0, 0.38497216, 0, 1.7644131, 0, 0.9744681, -1.2696648, -0.16957402, -0.42674255)
+size = Vector3(0.7446289, 1, 5.84375)
+
+[node name="GrassLeader" type="NavigationRegion3D" parent="Characters/Zones"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.730558, -0.38080645, 64.05368)
+navigation_mesh = SubResource("NavigationMesh_fo5ed")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Characters/Zones/GrassLeader"]
+transform = Transform3D(7.6577554, 0, -0.22452588, 0, 0.38497216, 0, 1.7644131, 0, 0.9744681, -1.2696648, -0.16957402, -0.42674255)
+size = Vector3(0.7446289, 1, 5.84375)
+
+[node name="GrassKid" type="NavigationRegion3D" parent="Characters/Zones"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.334293, -0.30495095, -13.392378)
+navigation_mesh = SubResource("NavigationMesh_fo5ed")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Characters/Zones/GrassKid"]
+transform = Transform3D(7.6577554, 0, -0.22452588, 0, 0.38497216, 0, 1.7644131, 0, 0.9744681, -1.2696648, -0.16957402, -0.42674255)
+size = Vector3(0.7446289, 1, 5.84375)
+
+[node name="OldManRock" type="NavigationRegion3D" parent="Characters/Zones"]
+transform = Transform3D(0.933236, 0, -0.35926396, 0, 1, 0, 0.35926396, 0, 0.933236, -30.034794, 0.38084555, -10.084618)
+navigation_mesh = SubResource("NavigationMesh_fo5ed")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Characters/Zones/OldManRock"]
+transform = Transform3D(7.6577554, 0, -0.22452588, 0, 0.38497216, 0, 1.7644131, 0, 0.9744681, -1.2696648, -0.16957402, -0.42674255)
+size = Vector3(0.7446289, 1, 5.84375)
+
+[node name="RockSoldier" type="NavigationRegion3D" parent="Characters/Zones"]
+transform = Transform3D(0.8840839, 0, 0.46732816, 0, 1, 0, -0.46732816, 0, 0.8840839, -24.639006, 0.33594346, 89.02149)
+navigation_mesh = SubResource("NavigationMesh_fo5ed")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Characters/Zones/RockSoldier"]
+transform = Transform3D(7.6577554, 0, -0.22452588, 0, 0.38497216, 0, 1.7644131, 0, 0.9744681, -1.2696648, -0.16957402, -0.42674255)
+size = Vector3(0.7446289, 1, 5.84375)
+
+[node name="GrassAnimalKeeper" type="NavigationRegion3D" parent="Characters/Zones"]
+transform = Transform3D(0.5632088, 0, 0.8263146, 0, 1, 0, -0.8263146, 0, 0.5632088, -16.32397, -0.3319564, 50.017155)
+navigation_mesh = SubResource("NavigationMesh_fo5ed")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Characters/Zones/GrassAnimalKeeper"]
+transform = Transform3D(7.6577554, 0, -0.22452588, 0, 0.38497216, 0, 1.7644131, 0, 0.9744681, -1.2696648, -0.16957402, -0.42674255)
+size = Vector3(0.7446289, 1, 5.84375)
