@@ -2,6 +2,7 @@ class_name NodeStateMachine
 extends NodeState
 
 @export var initial_node_state : NodeState
+var dia
 
 var node_states : Dictionary = {}
 var current_node_state : NodeState
@@ -9,6 +10,7 @@ var current_node_state_name : String
 var parent_node_name: String
 
 func _ready() -> void:
+	dia = get_tree().get_first_node_in_group("Dialogue")
 	parent_node_name = get_parent().name
 	
 	for child in get_children():
@@ -22,8 +24,11 @@ func _ready() -> void:
 
 
 func _process(delta : float) -> void:
+	if dia.running:
+		transition_to("idle")
 	if current_node_state:
 		current_node_state._on_process(delta)
+	
 
 
 func _physics_process(delta: float) -> void:
