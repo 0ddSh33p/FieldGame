@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://br6jc8l4u1xna" path="res://Assets/Sprites/npcs/AverageRockGUy.png" id="9_goo68"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xiri"]
-bg_color = Color(0.10980392, 0.10980392, 0.10980392, 0.34509805)
+bg_color = Color(0, 0.2, 0.20392157, 0.34509805)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
