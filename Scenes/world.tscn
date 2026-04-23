@@ -284,45 +284,54 @@ required_ids = Array[int]([-1, -1, -1])
 
 [node name="Zones" type="Node3D" parent="Characters"]
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Characters/Zones"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.271002, 0, -6.8405104)
+[node name="AverageRockDude" type="NavigationRegion3D" parent="Characters/Zones"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.693947, 2.0896928, 22.516922)
 navigation_mesh = SubResource("NavigationMesh_fo5ed")
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Characters/Zones/NavigationRegion3D"]
-transform = Transform3D(2.396058, 0, 0, 0, 1, 0, 0, 0, 2.1563988, 0, -0.16977262, 0)
-radius = 2.4189453
-height = 0.33203125
-
-[node name="NavigationRegion3D2" type="NavigationRegion3D" parent="Characters/Zones"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.103714, 2.0278177, 22.428904)
-navigation_mesh = SubResource("NavigationMesh_fo5ed")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Characters/Zones/NavigationRegion3D2"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Characters/Zones/AverageRockDude"]
 transform = Transform3D(7.6577554, 0, -0.22452588, 0, 0.38497216, 0, 1.7644131, 0, 0.9744681, -1.2696648, -0.16957402, -0.42674255)
 size = Vector3(0.7446289, 1, 5.84375)
 
-[node name="NPC" parent="Characters" instance=ExtResource("6_5ukr8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1922014, 0, -5.7081065)
-npc_group = "GrassPerson"
-my_dialogue = Array[String](["Hello $player%!", "I am a $cool% NPC", "goodbye.", "goodbye.", "I $hate% people"])
-dialogue_chunk_lengths = Array[int]([3, 1, 1])
-bias_level = Array[int]([1, -2, 0, 0, 3])
-global_id = Array[int]([0, 1, 2, 3, 4])
-required_ids = Array[int]([-1, -1, 5])
+[node name="GrassLeader" type="NavigationRegion3D" parent="Characters/Zones"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.730558, -0.38080645, 64.05368)
+navigation_mesh = SubResource("NavigationMesh_fo5ed")
 
-[node name="NPC2" parent="Characters" instance=ExtResource("6_5ukr8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.777264, 2.4613848, 23.036598)
-move_speed = 0.0
-npc_group = "RockPerson"
-my_dialogue = Array[String](["Fuck those $stupid% grass people...", "Hmph"])
-dialogue_chunk_lengths = Array[int]([1, 1])
-bias_level = Array[int]([2, 0])
-global_id = Array[int]([5, 6])
-required_ids = Array[int]([-1, -1])
+[node name="CSGBox3D" type="CSGBox3D" parent="Characters/Zones/GrassLeader"]
+transform = Transform3D(7.6577554, 0, -0.22452588, 0, 0.38497216, 0, 1.7644131, 0, 0.9744681, -1.2696648, -0.16957402, -0.42674255)
+size = Vector3(0.7446289, 1, 5.84375)
+
+[node name="GrassKid" type="NavigationRegion3D" parent="Characters/Zones"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.334293, -0.30495095, -13.392378)
+navigation_mesh = SubResource("NavigationMesh_fo5ed")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Characters/Zones/GrassKid"]
+transform = Transform3D(7.6577554, 0, -0.22452588, 0, 0.38497216, 0, 1.7644131, 0, 0.9744681, -1.2696648, -0.16957402, -0.42674255)
+size = Vector3(0.7446289, 1, 5.84375)
+
+[node name="OldManRock" type="NavigationRegion3D" parent="Characters/Zones"]
+transform = Transform3D(0.933236, 0, -0.35926396, 0, 1, 0, 0.35926396, 0, 0.933236, -30.034794, 0.38084555, -10.084618)
+navigation_mesh = SubResource("NavigationMesh_fo5ed")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Characters/Zones/OldManRock"]
+transform = Transform3D(7.6577554, 0, -0.22452588, 0, 0.38497216, 0, 1.7644131, 0, 0.9744681, -1.2696648, -0.16957402, -0.42674255)
+size = Vector3(0.7446289, 1, 5.84375)
+
+[node name="RockSoldier" type="NavigationRegion3D" parent="Characters/Zones"]
+transform = Transform3D(0.8840839, 0, 0.46732816, 0, 1, 0, -0.46732816, 0, 0.8840839, -24.639006, 0.33594346, 89.02149)
+navigation_mesh = SubResource("NavigationMesh_fo5ed")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Characters/Zones/RockSoldier"]
+transform = Transform3D(7.6577554, 0, -0.22452588, 0, 0.38497216, 0, 1.7644131, 0, 0.9744681, -1.2696648, -0.16957402, -0.42674255)
+size = Vector3(0.7446289, 1, 5.84375)
+
+[node name="GrassAnimalKeeper" type="NavigationRegion3D" parent="Characters/Zones"]
+transform = Transform3D(0.5632088, 0, 0.8263146, 0, 1, 0, -0.8263146, 0, 0.5632088, -16.32397, -0.3319564, 50.017155)
+navigation_mesh = SubResource("NavigationMesh_fo5ed")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Characters/Zones/GrassAnimalKeeper"]
+transform = Transform3D(7.6577554, 0, -0.22452588, 0, 0.38497216, 0, 1.7644131, 0, 0.9744681, -1.2696648, -0.16957402, -0.42674255)
+size = Vector3(0.7446289, 1, 5.84375)
 
 [connection signal="item_clicked" from="Dialogue/Control/DialogueUI/VBoxContainer/ItemList" to="Dialogue" method="overrideWord"]
 [connection signal="mouse_entered" from="Dialogue/Control/DialogueUI/VBoxContainer/ItemList" to="Dialogue" method="MouseOverPause"]
 [connection signal="mouse_exited" from="Dialogue/Control/DialogueUI/VBoxContainer/ItemList" to="Dialogue" method="MouseOutUnpause"]
-
-[editable path="Characters/NPC"]
-[editable path="Characters/NPC2"]
