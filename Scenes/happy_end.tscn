@@ -1,5 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://ctlpw2sajcxw4"]
+[gd_scene load_steps=24 format=3 uid="uid://ctlpw2sajcxw4"]
 
+[ext_resource type="FontFile" uid="uid://jsqxt1mnojio" path="res://Assets/Sprites/npcs/poetsen_one/PoetsenOne-Regular.ttf" id="1_7g5rx"]
 [ext_resource type="PackedScene" uid="uid://bk4ltvegcoxyn" path="res://Scenes/world_environment.tscn" id="4_7g5rx"]
 [ext_resource type="Texture2D" uid="uid://dt516ixg5xasm" path="res://Assets/Sprites/npcs/grassLeader.png" id="4_mu74l"]
 [ext_resource type="Texture2D" uid="uid://cpq1myj4gxq8u" path="res://Assets/Sprites/npcs/grassAnimalKeeper.png" id="5_bowe8"]
@@ -192,8 +193,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_8xiri")
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/Panel"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 238.0
+offset_bottom = 68.0
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -201,6 +202,8 @@ theme_override_constants/margin_bottom = 20
 
 [node name="Label" type="Label" parent="Control/Panel/MarginContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_7g5rx")
+theme_override_font_sizes/font_size = 20
 text = "...and they lived in peace."
 
 [node name="WoldDATA" type="Node" parent="."]

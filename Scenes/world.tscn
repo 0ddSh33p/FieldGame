@@ -1,20 +1,44 @@
-[gd_scene load_steps=36 format=4 uid="uid://cwkr71g5jqsap"]
+[gd_scene load_steps=41 format=4 uid="uid://cwkr71g5jqsap"]
 
 [ext_resource type="Script" uid="uid://bcm74enfk6k64" path="res://scripts/Dialogue.cs" id="1_5ukr8"]
 [ext_resource type="Script" uid="uid://cu1hxjts0s7gu" path="res://scripts/WordController.cs" id="2_fo5ed"]
 [ext_resource type="PackedScene" uid="uid://dajifag4dy54r" path="res://Prefabs/player.tscn" id="2_go701"]
+[ext_resource type="FontFile" uid="uid://jsqxt1mnojio" path="res://Assets/Sprites/npcs/poetsen_one/PoetsenOne-Regular.ttf" id="2_hgpy0"]
 [ext_resource type="PackedScene" uid="uid://bk4ltvegcoxyn" path="res://Scenes/world_environment.tscn" id="3_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://dyd0wlgvc8lbt" path="res://Prefabs/npc.tscn" id="6_5ukr8"]
 [ext_resource type="Texture2D" uid="uid://cpq1myj4gxq8u" path="res://Assets/Sprites/npcs/grassAnimalKeeper.png" id="6_o06y3"]
 [ext_resource type="Texture2D" uid="uid://dr7k62oo6rlte" path="res://Assets/Sprites/npcs/grassKid.png" id="7_o06y3"]
 [ext_resource type="Script" uid="uid://i4cs6ki2tukh" path="res://scripts/npc.gd" id="8_c5t2i"]
-[ext_resource type="Script" uid="uid://csq83gr2s0vh1" path="res://scripts/LookAtPlayer.gd" id="9_e0ngr"]
+[ext_resource type="Script" path="res://scripts/LookAtPlayer.gd" id="9_e0ngr"]
 [ext_resource type="Texture2D" uid="uid://tfrbtiq0bl0c" path="res://Assets/Sprites/npcs/OldManRock.png" id="10_kn0ld"]
 [ext_resource type="Script" uid="uid://g3phhp8qa0tk" path="res://scripts/StateMachine/node_state_machine.gd" id="11_hgpy0"]
 [ext_resource type="Script" uid="uid://bq6hh4h1yo46v" path="res://Prefabs/idle_state.gd" id="12_t2t4p"]
 [ext_resource type="Script" uid="uid://ctwwvsycd4tea" path="res://Prefabs/walk_state.gd" id="13_0pcbe"]
 [ext_resource type="Texture2D" uid="uid://p43ryv0hbn8x" path="res://Assets/Sprites/npcs/RockSoldier.png" id="14_kn0ld"]
 [ext_resource type="Texture2D" uid="uid://br6jc8l4u1xna" path="res://Assets/Sprites/npcs/AverageRockGUy.png" id="15_hgpy0"]
+
+[sub_resource type="Theme" id="Theme_t2t4p"]
+default_font = ExtResource("2_hgpy0")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hgpy0"]
+bg_color = Color(0, 0.09803922, 0.105882354, 0.36862746)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_hgpy0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2t4p"]
+bg_color = Color(3.008172e-07, 0.1657851, 0.16987184, 0.43137255)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="Animation" id="Animation_5ukr8"]
 length = 0.001
@@ -292,8 +316,11 @@ offset_right = -121.0
 offset_bottom = -55.0
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(1.0007738, 1)
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = SubResource("Theme_t2t4p")
+theme_override_styles/panel = SubResource("StyleBoxFlat_hgpy0")
 script = ExtResource("2_fo5ed")
 word = NodePath("MarginContainer/HBoxContainer/word")
 selectables = NodePath("VBoxContainer/ItemList")
@@ -332,14 +359,17 @@ text = "
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Dialogue/Control/DialogueUI"]
 layout_mode = 0
-offset_left = -20.0
-offset_top = -101.0
-offset_right = 201.0
-offset_bottom = -13.0
+offset_left = -35.0
+offset_top = -128.0
+offset_right = 183.0
+offset_bottom = -12.0
 alignment = 2
 
 [node name="ItemList" type="ItemList" parent="Dialogue/Control/DialogueUI/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_hgpy0")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_t2t4p")
 auto_height = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Dialogue"]
