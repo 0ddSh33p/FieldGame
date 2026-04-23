@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7ecijhak4go4"
-path="res://.godot/imported/RockKid.png-7f4f6bb4f08209912b049cec6903fb99.ctex"
+uid="uid://p43ryv0hbn8x"
+path="res://.godot/imported/RockSoldier.png-4eb12e027427f72989277daed048baa8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/npcs/RockKid.png"
-dest_files=["res://.godot/imported/RockKid.png-7f4f6bb4f08209912b049cec6903fb99.ctex"]
+source_file="res://Assets/Sprites/npcs/RockSoldier.png"
+dest_files=["res://.godot/imported/RockSoldier.png-4eb12e027427f72989277daed048baa8.ctex"]
 
 [params]
 
