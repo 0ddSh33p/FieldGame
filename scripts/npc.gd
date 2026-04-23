@@ -1,6 +1,4 @@
 extends CharacterBody3D
-@onready var path_follow: PathFollow3D = $Path3D/PathFollow3D
-@onready var path: Path3D = $Path3D
 
 @export var move_speed: float = 0.01
 
