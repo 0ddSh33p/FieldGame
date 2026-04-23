@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://dyd0wlgvc8lbt"]
 
 [ext_resource type="Script" uid="uid://i4cs6ki2tukh" path="res://scripts/npc.gd" id="1_kd6ta"]
-[ext_resource type="Script" path="res://scripts/LookAtPlayer.gd" id="2_c0dvn"]
-[ext_resource type="Texture2D" uid="uid://cpq1myj4gxq8u" path="res://Assets/Sprites/npcs/grassAnimalKeeper.png" id="3_dfrpf"]
+[ext_resource type="Script" uid="uid://csq83gr2s0vh1" path="res://scripts/LookAtPlayer.gd" id="2_c0dvn"]
+[ext_resource type="Texture2D" uid="uid://dt516ixg5xasm" path="res://Assets/Sprites/npcs/grassLeader.png" id="3_dfrpf"]
 [ext_resource type="Script" uid="uid://g3phhp8qa0tk" path="res://scripts/StateMachine/node_state_machine.gd" id="4_wvgss"]
 [ext_resource type="Script" uid="uid://bq6hh4h1yo46v" path="res://Prefabs/idle_state.gd" id="5_dfrpf"]
 [ext_resource type="Script" uid="uid://ctwwvsycd4tea" path="res://Prefabs/walk_state.gd" id="6_dfrpf"]
