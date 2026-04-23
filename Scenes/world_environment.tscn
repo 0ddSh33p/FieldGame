@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=4 uid="uid://bk4ltvegcoxyn"]
+[gd_scene load_steps=121 format=4 uid="uid://bk4ltvegcoxyn"]
 
 [ext_resource type="PackedScene" uid="uid://d3juim822u6ql" path="res://GrassInstancing/GrassInstance.tscn" id="1_pws0w"]
 [ext_resource type="PackedScene" uid="uid://cjx3d34687wxa" path="res://Prefabs/pillars.tscn" id="3_djf8e"]
@@ -664,6 +664,9 @@ size = Vector3(5.2433662, 0.91223145, 16.339653)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jpamh"]
 size = Vector3(9.215749, 0.91223145, 9.397366)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0cdvv"]
+size = Vector3(36.73433, 6.6118164, 10.105469)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8n4cp"]
 
@@ -1368,6 +1371,24 @@ skeleton = NodePath("")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Archetecture/BigRuin2"]
 transform = Transform3D(-0.9999996, 0, 1.1920929e-07, 0, 0.9999999, 0, -1.1920929e-07, 0, -0.9999996, -15.399216, 2.8897066, -5.928406)
 shape = SubResource("BoxShape3D_anxev")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Archetecture/BigRuin2"]
+transform = Transform3D(1, 0, 0, 0, 0.90914154, -0.41648707, 0, 0.416487, 0.90914166, -6.2863007, 1.0454403, 8.766544)
+shape = SubResource("BoxShape3D_0cdvv")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Archetecture/BigRuin2"]
+transform = Transform3D(1, 0, 0, 0, 0.89637804, 0.44329026, 0, -0.44329017, 0.89637816, -6.2863083, 0.97606826, -20.398243)
+shape = SubResource("BoxShape3D_0cdvv")
+
+[node name="Cube_009" type="MeshInstance3D" parent="Archetecture/BigRuin2"]
+transform = Transform3D(-0.9632202, 0, -0.26871374, 0, 1, 0, 0.26871374, 0, -0.9632202, 1.4118047, 4.791684, 7.404968)
+mesh = SubResource("ArrayMesh_nuaks")
+skeleton = NodePath("")
+
+[node name="Cube_010" type="MeshInstance3D" parent="Archetecture/BigRuin2"]
+transform = Transform3D(-0.99755526, 0, 0.06988287, 0, 1, 0, -0.06988287, 0, -0.99755526, -17.751514, 4.791684, 6.7683797)
+mesh = SubResource("ArrayMesh_nuaks")
+skeleton = NodePath("")
 
 [node name="Rocks" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.835014, 1.2809843, 35.57549)

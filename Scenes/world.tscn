@@ -1,10 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://cwkr71g5jqsap"]
+[gd_scene load_steps=35 format=3 uid="uid://cwkr71g5jqsap"]
 
 [ext_resource type="Script" uid="uid://bcm74enfk6k64" path="res://scripts/Dialogue.cs" id="1_5ukr8"]
 [ext_resource type="Script" uid="uid://cu1hxjts0s7gu" path="res://scripts/WordController.cs" id="2_fo5ed"]
 [ext_resource type="PackedScene" uid="uid://dajifag4dy54r" path="res://Prefabs/player.tscn" id="2_go701"]
 [ext_resource type="PackedScene" uid="uid://bk4ltvegcoxyn" path="res://Scenes/world_environment.tscn" id="3_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://dyd0wlgvc8lbt" path="res://Prefabs/npc.tscn" id="6_5ukr8"]
+[ext_resource type="Texture2D" uid="uid://cpq1myj4gxq8u" path="res://Assets/Sprites/npcs/grassAnimalKeeper.png" id="6_o06y3"]
+[ext_resource type="Texture2D" uid="uid://dr7k62oo6rlte" path="res://Assets/Sprites/npcs/grassKid.png" id="7_o06y3"]
+[ext_resource type="Script" uid="uid://i4cs6ki2tukh" path="res://scripts/npc.gd" id="8_c5t2i"]
+[ext_resource type="Script" uid="uid://csq83gr2s0vh1" path="res://scripts/LookAtPlayer.gd" id="9_e0ngr"]
+[ext_resource type="Texture2D" uid="uid://tfrbtiq0bl0c" path="res://Assets/Sprites/npcs/OldManRock.png" id="10_kn0ld"]
+[ext_resource type="Script" uid="uid://g3phhp8qa0tk" path="res://scripts/StateMachine/node_state_machine.gd" id="11_hgpy0"]
+[ext_resource type="Script" uid="uid://bq6hh4h1yo46v" path="res://Prefabs/idle_state.gd" id="12_t2t4p"]
+[ext_resource type="Script" uid="uid://ctwwvsycd4tea" path="res://Prefabs/walk_state.gd" id="13_0pcbe"]
+[ext_resource type="Texture2D" uid="uid://p43ryv0hbn8x" path="res://Assets/Sprites/npcs/RockSoldier.png" id="14_kn0ld"]
+[ext_resource type="Texture2D" uid="uid://br6jc8l4u1xna" path="res://Assets/Sprites/npcs/AverageRockGUy.png" id="15_hgpy0"]
 
 [sub_resource type="Animation" id="Animation_5ukr8"]
 length = 0.001
@@ -105,6 +115,140 @@ volumetric_fog_density = 0.1112
 volumetric_fog_albedo = Color(0.67058825, 0.9411765, 0.8901961, 1)
 volumetric_fog_emission = Color(0.67058825, 0.9411765, 0.8901961, 1)
 volumetric_fog_sky_affect = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k7acu"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("6_o06y3")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5v1tr"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("7_o06y3")
+texture_filter = 0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_anquw"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_kd6ta"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_axeuq"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("10_kn0ld")
+texture_filter = 0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kd6ta"]
+radius = 3.7685547
+
+[sub_resource type="Animation" id="Animation_1if3k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FacePlayer/MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.686383, 2.0857952, 0.99999994)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FacePlayer/MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.049458, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wik7l"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FacePlayer/MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(1.686383, 2.0857952, 0.99999994), Vector3(1.686383, 2.1345274, 0.99999994), Vector3(1.686383, 2.0857952, 0.99999994)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FacePlayer/MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 1.049458, 0), Vector3(0, 1.0799227, 0), Vector3(0, 1.049458, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dfrpf"]
+resource_name = "walk"
+length = 1.1333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FacePlayer/MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.1333),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(1.686383, 2.0857952, 0.99999994), Vector3(1.686383, 2.3048956, 0.99999994), Vector3(1.686383, 2.0857952, 0.99999994)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FacePlayer/MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.1333),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 1.049458, 0), Vector3(0, 1.1645839, 0), Vector3(0, 1.049458, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wik7l"]
+_data = {
+&"RESET": SubResource("Animation_1if3k"),
+&"idle": SubResource("Animation_wik7l"),
+&"walk": SubResource("Animation_dfrpf")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t2t4p"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("14_kn0ld")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0pcbe"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("15_hgpy0")
+texture_filter = 0
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_fo5ed"]
 vertices = PackedVector3Array(-4.2767944, 0.3879399, 1.569067, 0.72320557, 0.3879399, 2.569067, 1.7232056, 0.3879399, -1.680933, 1.7232056, 0.3879399, -2.430933, -3.2767944, 0.3879399, -3.430933, -4.2767944, 0.3879399, 0.819067)
@@ -261,6 +405,9 @@ bias_level = Array[int]([2, 0, 0, 0, 1, 0, 0, 0])
 global_id = Array[int]([0, 1, 2, 3, 4, 5, 6, 7])
 required_ids = Array[int]([-1, -1, 22, -1, 39, -1])
 
+[node name="AnimationPlayer" parent="Characters/GrassLeader" index="5"]
+blend_times = [&"idle", &"idle", 582.857, &"idle", &"walk", 1302.857]
+
 [node name="grassAniamlKeeper" parent="Characters" groups=["GrassPerson"] instance=ExtResource("6_5ukr8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.753433, 0, 49.94905)
 npc_group = "GrassPerson"
@@ -269,6 +416,12 @@ dialogue_chunk_lengths = Array[int]([2, 2, 1, 1, 2])
 bias_level = Array[int]([-1, 0, 1, -5, -1, 0, 0, 0])
 global_id = Array[int]([8, 9, 10, 11, 12, 13, 14, 15])
 required_ids = Array[int]([-1, -1, 44, -1, 47])
+
+[node name="MeshInstance3D" parent="Characters/grassAniamlKeeper/FacePlayer" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_k7acu")
+
+[node name="AnimationPlayer" parent="Characters/grassAniamlKeeper" index="5"]
+blend_times = [&"idle", &"idle", 582.857, &"idle", &"walk", 1302.857]
 
 [node name="GrassKid" parent="Characters" groups=["GrassPerson"] instance=ExtResource("6_5ukr8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.638092, 0, -13.480812)
@@ -279,14 +432,71 @@ bias_level = Array[int]([2, 0, 0, 0, 0, 0])
 global_id = Array[int]([16, 17, 18, 19, 20, 21])
 required_ids = Array[int]([-1, -1, 40])
 
-[node name="OldManRock" parent="Characters" groups=["RockPerson"] instance=ExtResource("6_5ukr8")]
-transform = Transform3D(0.37969834, 0, 0.92511034, 0, 1, 0, -0.92511034, 0, 0.37969834, -31.00935, 0.6570016, -10.914705)
+[node name="MeshInstance3D" parent="Characters/GrassKid/FacePlayer" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_5v1tr")
+
+[node name="AnimationPlayer" parent="Characters/GrassKid" index="5"]
+blend_times = [&"idle", &"idle", 582.857, &"idle", &"walk", 1302.857]
+
+[node name="OldManRock" type="CharacterBody3D" parent="Characters" node_paths=PackedStringArray("ico") groups=["RockPerson"]]
+transform = Transform3D(0.37969834, 0, 0.92511034, 0, 1, 0, -0.92511034, 0, 0.37969834, -31.00935, 0.734571, -10.914705)
+script = ExtResource("8_c5t2i")
 npc_group = "RockPerson"
 my_dialogue = Array[String](["Such $flimsy% grass fools!", "They all bend at the will of the wind.", "Us rocks hold $strong%, back in my day...", "I... I. . .", "Who are you again?", "We ought to go back to the way things were.", "Those $spineless% grass folk ought to be taught a lesson.", "Humph. . .", "Grass poeople really think they are $great%?", "They are $idiots%, all of them.", "Just like her, the damn fool got herself killed.", "Now they just blame us.", "I don't want to chat any more...", "Annoying brat."])
 dialogue_chunk_lengths = Array[int]([5, 2, 1, 4, 2])
 bias_level = Array[int]([2, 0, -3, 0, 0, 0, 3, 0, -2, 2, 0, 0, 0, 0])
 global_id = Array[int]([22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35])
 required_ids = Array[int]([-1, 16, -1, 8, -1])
+ico = NodePath("FacePlayer/ico")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Characters/OldManRock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_anquw")
+
+[node name="FacePlayer" type="Node3D" parent="Characters/OldManRock"]
+script = ExtResource("9_e0ngr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Characters/OldManRock/FacePlayer"]
+transform = Transform3D(1.686383, 0, 1.7484555e-07, 0, 2.0857952, 0, -2.948566e-07, 0, 0.99999994, 0, 1.049458, 0)
+mesh = SubResource("QuadMesh_kd6ta")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_axeuq")
+
+[node name="ico" type="Label3D" parent="Characters/OldManRock/FacePlayer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 2.5019886, 0.001803875)
+pixel_size = 0.01
+text = "!"
+font_size = 90
+
+[node name="Area3D" type="Area3D" parent="Characters/OldManRock"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Characters/OldManRock/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012377024, 0.8218384, 0.012062073)
+shape = SubResource("CylinderShape3D_kd6ta")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Characters/OldManRock"]
+
+[node name="StateMachine" type="Node" parent="Characters/OldManRock" node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("11_hgpy0")
+initial_node_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="Characters/OldManRock/StateMachine" node_paths=PackedStringArray("character", "animated_sprite")]
+script = ExtResource("12_t2t4p")
+character = NodePath("../..")
+animated_sprite = NodePath("../../AnimationPlayer")
+
+[node name="Walk" type="Node" parent="Characters/OldManRock/StateMachine" node_paths=PackedStringArray("character", "animated_sprite", "navigation_agent")]
+script = ExtResource("13_0pcbe")
+character = NodePath("../..")
+animated_sprite = NodePath("../../AnimationPlayer")
+navigation_agent = NodePath("../../NavigationAgent3D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Characters/OldManRock"]
+libraries = {
+&"": SubResource("AnimationLibrary_wik7l")
+}
+autoplay = "idle"
+blend_times = [&"idle", &"idle", 582.857, &"idle", &"walk", 1302.857]
 
 [node name="RockSoldier" parent="Characters" groups=["RockPerson"] instance=ExtResource("6_5ukr8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.624617, 0.7031189, 90.0458)
@@ -297,6 +507,12 @@ bias_level = Array[int]([-4, 3, -2, 0, 0, 0, 0, 0])
 global_id = Array[int]([36, 37, 38, 39, 40, 41, 42, 43])
 required_ids = Array[int]([-1, 2, -1, 32, -1])
 
+[node name="MeshInstance3D" parent="Characters/RockSoldier/FacePlayer" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_t2t4p")
+
+[node name="AnimationPlayer" parent="Characters/RockSoldier" index="5"]
+blend_times = [&"idle", &"idle", 582.857, &"idle", &"walk", 1302.857]
+
 [node name="AverageRockDude" parent="Characters" groups=["RockPerson"] instance=ExtResource("6_5ukr8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.317505, 2.5256147, 21.67431)
 npc_group = "GrassPerson"
@@ -305,6 +521,12 @@ dialogue_chunk_lengths = Array[int]([2, 1, 3, 1])
 bias_level = Array[int]([0, 0, -2, 0, 0, 0, 0])
 global_id = Array[int]([44, 45, 46, 47, 48, 49, 50])
 required_ids = Array[int]([-1, 8, -1, 15])
+
+[node name="MeshInstance3D" parent="Characters/AverageRockDude/FacePlayer" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_0pcbe")
+
+[node name="AnimationPlayer" parent="Characters/AverageRockDude" index="5"]
+blend_times = [&"idle", &"idle", 582.857, &"idle", &"walk", 1302.857]
 
 [node name="Zones" type="Node3D" parent="Characters"]
 
@@ -359,3 +581,11 @@ size = Vector3(0.7446289, 1, 5.84375)
 [connection signal="item_clicked" from="Dialogue/Control/DialogueUI/VBoxContainer/ItemList" to="Dialogue" method="overrideWord"]
 [connection signal="mouse_entered" from="Dialogue/Control/DialogueUI/VBoxContainer/ItemList" to="Dialogue" method="MouseOverPause"]
 [connection signal="mouse_exited" from="Dialogue/Control/DialogueUI/VBoxContainer/ItemList" to="Dialogue" method="MouseOutUnpause"]
+[connection signal="body_entered" from="Characters/OldManRock/Area3D" to="Characters/OldManRock" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Characters/OldManRock/Area3D" to="Characters/OldManRock" method="_on_area_3d_body_exited"]
+
+[editable path="Characters/GrassLeader"]
+[editable path="Characters/grassAniamlKeeper"]
+[editable path="Characters/GrassKid"]
+[editable path="Characters/RockSoldier"]
+[editable path="Characters/AverageRockDude"]
